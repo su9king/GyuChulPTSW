@@ -1,12 +1,10 @@
 async function login(ID, PW) {
     const functionType = 0;
-    const IDTest = "신민철";
-    const PWTest = "123456";
     
     const response = await fetch('index.php', {
         method : 'POST',
         headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
-        body: `functionType=${functionType}&ID=${IDTest}&PW=${PWTest}`
+        body: `functionType=${functionType}&ID=${ID}&PW=${PW}`
     });
 
     const loginExists = await response.text();
@@ -20,7 +18,7 @@ async function register(ID, PW) {
     const response = await fetch('index.php', {
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
-        body : `fuctionType=${functionType}&ID=${ID}&PW=${PW}`
+        body : `functionType=${functionType}&ID=${ID}&PW=${PW}`
         
     });
     
@@ -35,7 +33,7 @@ async function checkData() {
     const respones = await fetch('index.php',{
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
-        body : `functionType=${functionType}&ID=${ID}&PW=${PW}`
+        body : `functionType=${functionType}`
     });
 
     const data = await respones.text();
