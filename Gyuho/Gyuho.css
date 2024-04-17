@@ -1,0 +1,72 @@
+body {
+    color: #4d4b53; 
+    font-family: Poppins, 'Noto Sans KR', sans-serif; 
+    text-align: center; 
+    margin: 0
+}
+
+#head {
+    background-color: #703fda; 
+    color: #ffffff; 
+    padding: 96px 0 20px 0
+}
+
+#first_head {
+    color: #a196e7; 
+    font-size: 24px; 
+    font-weight: 900; 
+    margin: 16px 0
+}
+
+#second_head {
+    font-size: 48px; 
+    margin: 16px 0
+}
+
+#team {
+    font-size: 28px
+}
+
+.member {
+    color: #a196e7; 
+    font-size: 20px;
+    margin: 1px 15px;
+    text-decoration: none;
+}
+
+#name {
+    font-size: 52px;
+    font-weight: 900;
+    margin: 50px;
+}
+
+#motto {
+    font-size: 60px;
+    margin: 15;
+
+    font-family: "Nanum Pen Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.introduction {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 80px 0 0 ;
+}
+
+.floor {
+    background-color: #e2e5ff; 
+    color: #636363; 
+    padding: 20px 20px;
+    text-align: center; 
+}
+
+.Button {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin: 50px auto; /* 가운데 정렬 */
+    display: flex; /* 아래 flex-direction 메서드를 위해 형식 지정 */
+    flex-direction: row; /* 이미지를 가로로 나열 */
+}
