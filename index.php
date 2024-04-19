@@ -1,8 +1,8 @@
 <?php
 
-$fileName = '../DataBox/DataTable.xlsx';
+$fileName = 'DataBox/DataTable.xlsx';
 $zip = new ZipArchive;
-require '../DataBox/vendor/autoload.php';
+require 'DataBox/vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;

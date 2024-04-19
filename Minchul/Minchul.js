@@ -3,5 +3,5 @@ function goInsta(){
 }
 
 function goGyuho(){
-    location.href = "Gyuho.html";
+    location.href = "../Gyuho/Gyuho.html";
 }
