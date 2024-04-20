@@ -18,7 +18,7 @@ async function login(ID, PW) {
     
     if (loginExists == 1) {
         alert("로그인 되었습니다!");
-        window.location.href = "Gyuho/Gyuho.html"
+        window.location.href = "Gyuho.html"
     } else {
         alert("일치하는 정보가 없습니다.")
     }
