@@ -5,3 +5,7 @@ function goInsta(){
 function goGyuho(){
     location.href = "Gyuho.html";
 }
+
+function goChat(){
+    location.href = "../chatting.html";
+}
