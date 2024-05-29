@@ -1,45 +1,25 @@
+const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
-const fs = require('fs');
+const path = require('path');
 
-const server = http.createServer((req,res) => {
-    // URL이 '/'인 경우 index.html 파일 제공
-    if (req.url === '/') {
-        fs.readFile('./index.html', (err, data) => {
-            if (err) {
-                res.writeHead(500);
-                return res.end('Error loading index.html');
-            }
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 
-            res.writeHead(200);
-            res.end(data);
-        });
-    }
-    else if (req.url === '/index.js') {
-        fs.readFile('./index.js', (err, data) => {
-            if (err) {
-                res.writeHead(500);
-                return res.end('Error loading index.js');
-            }
+// Startpoint 폴더에서 정적 파일 제공
+app.use(express.static(path.join(__dirname, 'Startpoint')));
 
-            res.writeHead(200, {'Content-Type': 'application/javascript'});
-            res.end(data);
-        });
-    }
-    else if (req.url === '/index.css') {
-        fs.readFile('./index.css', (err, data) => {
-            if (err) {
-                res.writeHead(500);
-                return res.end('Error loading index.js');
-            }
+// Minchul 폴더에서 정적 파일 제공
+app.use(express.static(path.join(__dirname, 'Minchul')));
 
-            res.writeHead(200);
-            res.end(data);
-        });
-    }
+// Gyuho 폴더에서 정적 파일 제공
+app.use(express.static(path.join(__dirname, 'Gyuho')));
 
-    
+// 루트 경로에서 index.html 제공
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Startpoint', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT , () => console.log(`server running on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
