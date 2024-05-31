@@ -22,6 +22,7 @@ async function login(ID, PW) {
         window.location.href = "Gyuho.html"
     } else {
         alert("일치하는 정보가 없습니다.")
+        
     }
 
 }

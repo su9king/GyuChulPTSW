@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'Startpoint')));
 app.use(express.static(path.join(__dirname, 'Minchul')));
 app.use(express.static(path.join(__dirname, 'Gyuho')));
 
+
 // 루트 경로에서 index.html 제공
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Startpoint', 'index.html'));
@@ -25,9 +26,11 @@ app.get('/', (req, res) => {
 
 // 서버측에서 해당 코드들 진행
 app.post('/login', (req, res) => {
+    
     const { ID, PW } = req.body;
-    login(ID, PW);
-    res.send("서버사이드 측 콘솔 결과 : login 호출");
+    console.log(login(ID, PW));
+    res.send(login(ID, PW));
+    
 });
 
 app.post('/register', (req, res) => {
@@ -41,6 +44,18 @@ app.post('/checkData', (req, res) => {
     
     checkData();
     res.send("서버사이드 측 콘솔 결과 : checkData 호출");
+});
+
+io.on('connection', (socket) => {
+    console.log('A user connected');
+
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
 });
 
 const PORT = process.env.PORT || 3000;

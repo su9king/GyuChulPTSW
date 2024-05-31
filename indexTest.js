@@ -2,6 +2,7 @@ console.log("indexTest 파일 실행됨.");
 
 function login(ID, PW) {
     console.log("로그인 결과 :", ID, "PW:", PW);
+    return('1');
 }
 
 function register(ID, PW) {
