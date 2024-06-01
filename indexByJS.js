@@ -1,5 +1,5 @@
 const xlsx = require('xlsx');
-const JSZip = require('jsszip');
+const JSZip = require('jszip');
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,13 +8,15 @@ const app = express(); // HTTP 요청에 반응하는 express 애플리케이션
 app.use(bodyParser.json()); // json 형식을 파싱
 app.use(bodyParser.urlencoded({ extended: true })); // url-encoded 형식을 파싱
 
+const port = 3000;
 
 // 회원가입 함수
 function registerUser(firstSheet, ID, PW) {
     //데이터베이스의 Excel파일을 로드해서 스프레드시트 객체 생성
     //그 객체의 워크시트를 새로운 변수에 저장해서 객체로 활용
-    const workbook = xlsx.readFile('DataBox/DataTable.xlsx'); // 엑셀 파일 읽어오기
+    const workbook = xlsx.readFile('DataBox\DataTable.xlsx'); // 엑셀 파일 읽어오기
     const firstSheetName = workbook.SheetNames[0]; // 첫 번째 시트 이름 가져오기
+    console.log(firstSheetName)
     const firstSheet = workbook.Sheets[firstSheetName]; // 시트 이름을 이용해 엑셀 파일의 첫 번째 시트 가져오기
 
     // 첫 번째 시트의 데이터 범위를 얻기
@@ -49,7 +51,7 @@ function registerUser(firstSheet, ID, PW) {
         e: { c: range.e.c, r: highestRow + 1 }
     });
 
-    xlsx.writeFile(workbook, 'DataBox/DataTable.xlsx');
+    xlsx.writeFile(workbook, 'DataBox\DataTable.xlsx');
 
     return 0; // 회원가입 성공
     }
@@ -58,7 +60,7 @@ function registerUser(firstSheet, ID, PW) {
 async function extractSharedStrings(zipFilePath) {
     const data = fs.readFileSync(zipFilePath);
     const zip = await JSZip.loadAsync(data);
-    const sharedStringsXML = await zip.file('xl/sharedStrings.xml').async('string');
+    const sharedStringsXML = await zip.file('xl\sharedStrings.xml').async('string');
     const sharedStringsDoc = xlsx.read(sharedStringsXML, { type: 'string' });
 
     const sharedStrings = [];
@@ -121,9 +123,14 @@ async function checkCredentials(firstSheet, ID, PW, sharedStrings) {
 }
 
 // 클라이언트 요청 처리
-app.post('/api', async (req, res) => { // 비동기로 /api로 들어오는 post요청 처리
+app.post('index.js', async (req, res) => { // 비동기로 /api로 들어오는 post요청 처리
+    console.log("test");
     const { functionType, ID, PW } = req.body; // request, response
-    const zipFilePath = 'DataBox/DataTable.xlsx';
+    const zipFilePath = 'DataBox\DataTable.xlsx';
+
+    const workbook = xlsx.readFile(zipFilePath);
+    const firstSheetName = workbook.SheetNames[0];
+    const firstSheet = workbook.Sheets[firstSheetName];
 
     if (functionType === 0) { // 로그인 처리
         const sharedStrings = await extractSharedStrings(zipFilePath);

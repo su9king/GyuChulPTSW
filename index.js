@@ -5,8 +5,8 @@ async function login(ID, PW) {
     var PW = document.getElementById('PW').value;
 
     const functionType = 0;
-    
-    const response = await fetch('indexByJS.js', {
+
+    const response = await fetch('/index.js', {
         method : 'POST',
         headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
         body: `functionType=${functionType}&ID=${ID}&PW=${PW}`
@@ -16,7 +16,7 @@ async function login(ID, PW) {
     console.log(loginExists);
 
     // loginExists : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
-    
+    console.log(loginExists);
     if (loginExists == 1) {
         alert("로그인 되었습니다!");
         window.location.href = "Gyuho.html"
@@ -32,7 +32,7 @@ async function register(ID, PW) {
     var PW = document.getElementById('PW').value;
 
     const functionType = 1;
-    const response = await fetch('indexByJS.js', {
+    const response = await fetch('/index.js', {
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
         body : `functionType=${functionType}&ID=${ID}&PW=${PW}`
@@ -55,7 +55,7 @@ async function register(ID, PW) {
 async function checkData() {
     const functionType = 2;
     // 최대 데이터 노출 개수는 10개
-    const respones = await fetch('indexByJS.js',{
+    const respones = await fetch('/index.js',{
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
         body : `functionType=${functionType}`
@@ -65,3 +65,5 @@ async function checkData() {
     console.log(data);
    
 }
+
+
