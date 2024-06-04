@@ -4,7 +4,7 @@ const socketIo = require('socket.io');
 const path = require('path');
 
 //indexTest 코드에서 login,register,checkData 함수 불러오기
-const { login, register, checkData } = require('./indexTest');
+const { indexTestMain } = require('./indexTest');
 
 
 const app = express();
@@ -24,24 +24,29 @@ app.get('/', (req, res) => {
 
 
 // 서버측에서 해당 코드들 진행
-app.post('/login', (req, res) => {
-    const { ID, PW } = req.body;
-    login(ID, PW);
-    res.send("서버사이드 측 콘솔 결과 : login 호출");
-});
+app.post('/execute',(req,res) => {
+    const {ID,PW} = req.body;
+    res.send(indexTestMain());
+})
 
-app.post('/register', (req, res) => {
-    const { ID, PW } = req.body;
+// app.post('/login', (req, res) => {
+//     const { ID, PW } = req.body;
+//     login(ID, PW);
+//     res.send("서버사이드 측 콘솔 결과 : login 호출");
+// });
+
+// app.post('/register', (req, res) => {
+//     const { ID, PW } = req.body;
   
-    register(ID, PW);
-    res.send("서버사이드 측 콘솔 결과 : register 호출");
-});
+//     register(ID, PW);
+//     res.send("서버사이드 측 콘솔 결과 : register 호출");
+// });
 
-app.post('/checkData', (req, res) => {
+// app.post('/checkData', (req, res) => {
     
-    checkData();
-    res.send("서버사이드 측 콘솔 결과 : checkData 호출");
-});
+//     checkData();
+//     res.send("서버사이드 측 콘솔 결과 : checkData 호출");
+// });
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
