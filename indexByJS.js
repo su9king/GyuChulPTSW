@@ -122,8 +122,12 @@ async function checkCredentials(firstSheet, ID, PW, sharedStrings) {
     return false;
 }
 
+
+module.exports = { indexByJS };
+
 // 클라이언트 요청 처리
-app.post('index.js', async (req, res) => { // 비동기로 /api로 들어오는 post요청 처리
+async function indexByJS (req, res) {
+//app.post('index.js', async (req, res) => { // 비동기로 /api로 들어오는 post요청 처리
     console.log("test");
     const { functionType, ID, PW } = req.body; // request, response
     const zipFilePath = 'DataBox\DataTable.xlsx';
@@ -159,5 +163,5 @@ app.post('index.js', async (req, res) => { // 비동기로 /api로 들어오는 
 
         res.json(dataList); // 데이터 리스트를 JSON 형식으로 변환하여 출력합니다.
     }
-});
+};
 
