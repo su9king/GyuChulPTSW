@@ -12,9 +12,12 @@ function register(ID, PW) {
 function checkData() {
     console.log("데이터 확인");
 }
+function indexTestMain(){
+    login(1,2);
+    register(3,4);
+    checkData();
+}
 
 module.exports = {
-    login,
-    register,
-    checkData
+    indexTestMain
 };

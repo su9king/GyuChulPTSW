@@ -6,7 +6,7 @@ async function login(ID, PW) {
 
     const functionType = 0;
     
-    const response = await fetch('login', {
+    const response = await fetch('execute', {
         method : 'POST',
         headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
         body: `functionType=${functionType}&ID=${ID}&PW=${PW}`
@@ -33,7 +33,7 @@ async function register(ID, PW) {
     var PW = document.getElementById('PW').value;
 
     const functionType = 1;
-    const response = await fetch('register', {
+    const response = await fetch('execute', {
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
         body : `functionType=${functionType}&ID=${ID}&PW=${PW}`
@@ -56,7 +56,7 @@ async function register(ID, PW) {
 async function checkData() {
     const functionType = 2;
     // 최대 데이터 노출 개수는 10개
-    const respones = await fetch('checkData',{
+    const respones = await fetch('execute',{
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
         body : `functionType=${functionType}`
