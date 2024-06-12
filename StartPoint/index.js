@@ -1,11 +1,12 @@
 async function login(ID, PW) {
 
+
     var ID = document.getElementById('ID').value;
     var PW = document.getElementById('PW').value;
 
     const functionType = 0;
     
-    const response = await fetch('index.php', {
+    const response = await fetch('execute', {
         method : 'POST',
         headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
         body: `functionType=${functionType}&ID=${ID}&PW=${PW}`
@@ -18,9 +19,10 @@ async function login(ID, PW) {
     
     if (loginExists == 1) {
         alert("로그인 되었습니다!");
-        window.location.href = "../Gyuho/Gyuho.html"
+        window.location.href = "Gyuho.html"
     } else {
         alert("일치하는 정보가 없습니다.")
+        
     }
 
 }
@@ -31,7 +33,7 @@ async function register(ID, PW) {
     var PW = document.getElementById('PW').value;
 
     const functionType = 1;
-    const response = await fetch('index.php', {
+    const response = await fetch('execute', {
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
         body : `functionType=${functionType}&ID=${ID}&PW=${PW}`
@@ -54,7 +56,7 @@ async function register(ID, PW) {
 async function checkData() {
     const functionType = 2;
     // 최대 데이터 노출 개수는 10개
-    const respones = await fetch('index.php',{
+    const respones = await fetch('execute',{
         method : 'POST',
         headers : {'Content-Type' : 'application/x-www-form-urlencoded'},
         body : `functionType=${functionType}`
