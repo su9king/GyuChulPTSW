@@ -2,10 +2,10 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
-
+const connection = require('./DB');
 
 //indexTest 코드에서 login,register,checkData 함수 불러오기
-const { executeMain } = require('./indexByGyu');
+const { executeMain } = require('./indexByChul');
 
 
 const app = express();
@@ -26,37 +26,19 @@ app.get('/', (req, res) => {
 
 
 // 서버측에서 해당 코드들 진행
-app.post('/execute',(req,res) => {
-    const { functionType, ID, PW } = req.body; // request, response
-    //const result = executeMain(functionType, ID, PW); // 여기에서 아직 함수가 다 안 돌았는데 출력하려고 해서 null값 등장
-    (async function() {  // executeMain함수에 await메소드를 쓰기 위한 코드; server.js에 어울리지 않는 긴 코드로 수정필요
-        try {
-            const result = await executeMain(functionType, ID, PW); 
-            console.log(result);
-        } catch (error) {
-            console.error(error); // 에러 처리
-        }
-    })();
-})
+app.post('/execute',async (req,res) => {
+    const { functionType, ID, PW } = req.body;
+    const result = await executeMain(functionType,ID,PW)
+    res.json(result);
+    // connection.query('SELECT * FROM users', (error, results, fields) => {
+    //     if (error) {
+    //       console.error('쿼리 실행 실패:', error.stack);
+    //       res.status(500).send('서버 오류');
+    //       return;
+    //     }
+    //     res.json(results);
+});
 
-// app.post('/login', (req, res) => {
-//     const { ID, PW } = req.body;
-//     login(ID, PW);
-//     res.send("서버사이드 측 콘솔 결과 : login 호출");
-// });
-
-// app.post('/register', (req, res) => {
-//     const { ID, PW } = req.body;
-  
-//     register(ID, PW);
-//     res.send("서버사이드 측 콘솔 결과 : register 호출");
-// });
-
-// app.post('/checkData', (req, res) => {
-    
-//     checkData();
-//     res.send("서버사이드 측 콘솔 결과 : checkData 호출");
-// });
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -2,6 +2,7 @@
   "dependencies": {
     "express": "^4.19.2",
     "jszip": "^3.10.1",
+    "node-mysql": "^0.4.2",
     "socket.io": "^4.7.5",
     "xlsx": "^0.18.5"
   }

@@ -17,7 +17,7 @@ async function login(ID, PW) {
 
     // loginExists : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
     
-    if (loginExists == 1) {
+    if (loginExists == '1') {
         alert("로그인 되었습니다!");
         window.location.href = "Gyuho.html"
     } else {
@@ -42,9 +42,9 @@ async function register(ID, PW) {
     
     const registerExists = await response.text();
     console.log(registerExists);
-    // registerExists : 1 (아이디가 존재함) / : 0 (아이디가 존재하지 않음)
+    // registerExists : 0 (아이디가 존재함) / : 1 (아이디가 존재하지 않음)
    
-    if (registerExists == 1) {
+    if (registerExists == '0') {
         alert("이미 존재하는 정보입니다!");
     } else {
         // 새롭게 데이터베이스에 정보 추가
