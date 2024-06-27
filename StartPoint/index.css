@@ -44,6 +44,21 @@
     cursor: pointer; /* 커서를 포인터로 변경하여 버튼을 클릭할 때 인터랙션을 제공합니다 */
   }
 
+.kakaoBtn {
+    margin-top: 5px; /* 버튼 사이 간격 */
+    width: 200px; /* 버튼의 가로 길이 */
+    height: 30px; /* 버튼의 높이 */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 */
+    border: none;
+    color: white; /* 버튼 텍스트 색상을 흰색으로 설정 */
+    cursor: pointer; /* 커서를 포인터로 변경하여 버튼을 클릭할 때 인터랙션을 제공합니다 */
+    background-image: url('kakaoLoginBtn.jpg'); /* 이미지 경로를 여기 입력 */
+    background-size: contain; /* 이미지 비율을 유지하며 버튼 크기에 맞춤 */
+    background-repeat: no-repeat; /* 이미지 반복을 하지 않음 */
+    background-position: center; /* 이미지를 가운데로 정렬 */
+    background-color: transparent; /* 배경색 투명으로 설정 */
+}
+
 ::placeholder {
     text-align: center;
 }

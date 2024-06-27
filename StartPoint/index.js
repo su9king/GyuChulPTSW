@@ -1,3 +1,41 @@
+Kakao.init('535666ed3b468ae19cff49b514f5f522');
+console.log( Kakao.isInitialized() );
+
+function loginWithKakao() {
+
+    Kakao.Auth.login({
+        success: function (authObj) {
+            console.log(authObj); // access토큰 값
+            Kakao.Auth.setAccessToken(authObj.access_token); // access토큰값 저장
+            getInfo();
+        },
+        fail: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function getInfo() {
+    Kakao.API.request({
+        url: '/v2/user/me',  // 정보 요청 엔드포인트: 카카오에서 지정
+        success: function (res) {
+            console.log(res);
+            // 이메일, 성별, 닉네임, 프로필이미지, 생일
+            var email = res.kakao_account.email;
+            var gender = res.kakao_account.gender;
+            var profile_nickname = res.kakao_account.profile.nickname;
+            var profile_image = res.kakao_account.profile.thumbnail_image_url;
+            var birthday = res.kakao_account.birthday;
+
+            console.log(email, gender, profile_nickname, profile_image, birthday);
+            alert(profile_nickname);
+        },
+        fail: function (error) {
+            alert('카카오 로그인에 실패했습니다. 관리자에게 문의하세요.' + JSON.stringify(error));
+        }
+    });
+}
+
 async function login(ID, PW) {
 
 
@@ -66,3 +104,5 @@ async function checkData() {
     console.log(data);
    
 }
+
+
