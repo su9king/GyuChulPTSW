@@ -1,4 +1,4 @@
-Kakao.init('535666ed3b468ae19cff49b514f5f522');
+Kakao.init('kakao_app_key');
 console.log( Kakao.isInitialized() );
 
 function loginWithKakao() {
