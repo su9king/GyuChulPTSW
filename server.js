@@ -14,14 +14,14 @@ const io = socketIo(server);
 
 app.use(express.urlencoded({ extended: true }));
 // 리소스 제공
-app.use(express.static(path.join(__dirname, 'Startpoint')));
+app.use(express.static(path.join(__dirname, 'StartPoint')));
 app.use(express.static(path.join(__dirname, 'Minchul')));
 app.use(express.static(path.join(__dirname, 'Gyuho')));
 
 
 // 루트 경로에서 index.html 제공
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Startpoint', 'index.html'));
+    res.sendFile(path.join(__dirname, 'StartPoint', 'index.html'));
 });
 
 
