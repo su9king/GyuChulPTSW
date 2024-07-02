@@ -1,6 +1,6 @@
 const express = require('express');
 const connection = require('./DB');
-var sessionToken = [];
+
 // 회원가입 함수
 async function registerUser(ID, PW) {
     //Promise 키워드 정보 추가 조사 필요.
@@ -58,10 +58,10 @@ async function checkCredentials(ID, PW) {
 
 
 
-module.exports = { executeMain };
+module.exports = { accessMain };
 
 // 클라이언트 요청 처리
-async function executeMain (functionType, ID, PW, Token) {
+async function accessMain (functionType, ID, PW, Token) {
 
     if (functionType == 0) { // 로그인 처리
         
@@ -83,6 +83,8 @@ async function executeMain (functionType, ID, PW, Token) {
             console.log(results);
     } 
 )   }else if (functionType == 5) { // 유저 세션 삭제 
+    // 현재 server.js 에 sessionToken 이 존재함. 데이터가 동적으로
+    // 불러와 지지 않는다면, 실행 오류 발생할 수 있음.
 	console.log(Token);
         for(var i=0;i < sessionToken.length;i++){
         	if(sessionToken[i] == Token){
