@@ -4,6 +4,7 @@ const socketIo = require('socket.io');
 const path = require('path');
 const connection = require('./DB');
 var sessionToken = [];
+module.exports = sessionToken;
 
 //indexTest 코드에서 login,register,checkData 함수 불러오기
 const { accessMain } = require('./accessModule');

@@ -1,7 +1,6 @@
 const express = require('express');
 const connection = require('./DB');
-const server = require('./server');
-var sessionToken = server.sessionToken;
+const sessionToken = require('./server');
 
 // 회원가입 함수
 async function registerUser(ID, PW) {
