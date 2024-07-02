@@ -1,6 +1,6 @@
 const express = require('express');
 const connection = require('./DB');
-
+var sessionToken = [];
 // 회원가입 함수
 async function registerUser(ID, PW) {
     //Promise 키워드 정보 추가 조사 필요.
@@ -35,7 +35,7 @@ async function checkCredentials(ID, PW) {
     //Promise 키워드 정보 추가 조사 필요.
     return new Promise((resolve, reject) => {
         console.log(ID, PW);
-        connection.query('SELECT 1 FROM users WHERE username = ? AND password = ?', [ID, PW],
+        connection.query('SELECT 1,id FROM users WHERE userID = ? AND userPW = ?', [ID, PW],
             (error, results, fields) => {
                 if (error) {
                     console.error('쿼리 실행 오류:', error);
@@ -43,10 +43,11 @@ async function checkCredentials(ID, PW) {
                 }//length 를 넣지 않으면 0일때 코드 오류 발생해서 일단 가볍게 이걸로 넣어둠.
                 if (results.length > 0 && results[0]['1'] == 1) {
                     console.log("Success");
-                    resolve(1);
+                    sessionToken.push(results[0]['id']);
+                    resolve([1,results[0]['id']]);
                 } else {
                     console.log("Fail");
-                    resolve(0);
+                    resolve([0]);
                 }
             }
         );
