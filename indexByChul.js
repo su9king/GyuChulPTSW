@@ -57,10 +57,11 @@ async function checkCredentials(ID, PW) {
 }
 
 
+
 module.exports = { executeMain };
 
 // 클라이언트 요청 처리
-async function executeMain (functionType, ID, PW) {
+async function executeMain (functionType, ID, PW, Token) {
 
     if (functionType == 0) { // 로그인 처리
         
@@ -80,7 +81,11 @@ async function executeMain (functionType, ID, PW) {
               return 500;
             }
             console.log(results);
-    }
-)};
+    } 
+)   }else if (functionType == 5) { // 유저 세션 삭제 
+        sessionToken.filter((item) => item !== Token)
+        console.log(sessionToken)
+        
+};  
 
 }

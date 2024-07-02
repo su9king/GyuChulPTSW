@@ -36,7 +36,14 @@ function getInfo() {
     });
 }
 
-function logout() { ///////////////////////////////
+async function logout() { ///////////////////////////////
+
+    const functionType = 5;
+    const response = await fetch('execute', {
+        method : 'POST',
+        headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+        body: `functionType=${functionType}&Token=${sessionStorage.getItem('username')}`
+    });
     sessionStorage.removeItem('username');
     alert('로그아웃되었습니다!')
 }
@@ -51,7 +58,6 @@ async function login(ID, PW) {
 
 
     // sessionStorage.setItem('username', ID);  username이라는 key에 실제 아이디를 value로 저장해서 체크하기
-    sessionStorage.setItem('username', 'idAsToken');  /////////////////////////////////
 
     const functionType = 0;
     
@@ -62,7 +68,7 @@ async function login(ID, PW) {
     });
 
     const loginExists = await response.json();
-    console.log(loginExists[1]);
+    sessionStorage.setItem('username', loginExists[1]);  /////////////////////////////////
 
     // loginExists : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
     

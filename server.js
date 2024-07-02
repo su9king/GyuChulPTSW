@@ -27,8 +27,8 @@ app.get('/', (req, res) => {
 
 // 서버측에서 해당 코드들 진행
 app.post('/execute',async (req,res) => {
-    const { functionType, ID, PW } = req.body;
-    const result = await executeMain(functionType,ID,PW)
+    const { functionType, ID, PW , Token } = req.body;
+    const result = await executeMain(functionType,ID,PW,Token)
     res.json(result);
     
 });
