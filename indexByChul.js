@@ -83,8 +83,15 @@ async function executeMain (functionType, ID, PW, Token) {
             console.log(results);
     } 
 )   }else if (functionType == 5) { // 유저 세션 삭제 
-        sessionToken.filter((item) => item !== Token)
-        console.log(sessionToken)
+	console.log(Token);
+        for(var i=0;i < sessionToken.length;i++){
+        	if(sessionToken[i] == Token){
+        		console.log("DELETE");
+        		sessionToken.splice(i,1);
+        		i--;
+        		}
+        }
+        console.log(sessionToken);
         
 };  
 
