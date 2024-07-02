@@ -12,7 +12,7 @@ async function mainPageOrder(functionType,Token) {
             (error, results, fields) => {
                 console.log(results)
 
+    })} else if (functionType == 2){
+        //조직 참가를 위한 데이터 제공 or 서버에서 해야할 일.
     }
-)
-}
 }

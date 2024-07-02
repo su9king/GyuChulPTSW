@@ -9,6 +9,8 @@ var sessionToken = [];
 const { accessMain } = require('./accessModule');
 const { mainPageOrder } = require('./mainPageOrder');
 
+
+
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -27,9 +29,11 @@ app.get('/', (req, res) => {
 
 // 서버측에서 해당 코드들 진행
 app.post('/execute',async (req,res) => {
+    console.log(sessionToken);
     const { functionType, ID, PW , Token } = req.body;
     const result = await accessMain(functionType,ID,PW,Token)
     res.json(result);
+
     
 });
 
