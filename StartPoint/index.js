@@ -50,12 +50,12 @@ async function login(ID, PW) {
         body: `functionType=${functionType}&ID=${ID}&PW=${PW}`
     });
 
-    const loginExists = await response.text();
-    console.log(loginExists);
+    const loginExists = await response.json();
+    console.log(loginExists[1]);
 
     // loginExists : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
     
-    if (loginExists == '1') {
+    if (loginExists[0] == '1') {
         alert("로그인 되었습니다!");
     
     } else {
