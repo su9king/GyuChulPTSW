@@ -11,3 +11,4 @@ function logoutInMainPage() {
     sessionStorage.removeItem('username');
     window.location.href = 'index.html';
 }
+

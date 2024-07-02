@@ -36,24 +36,12 @@ function getInfo() {
     });
 }
 
-function expireSession() {
+function logout() { ///////////////////////////////
     sessionStorage.removeItem('username');
+    alert('로그아웃되었습니다!')
 }
 
-function makeSession() {
-    sessionStorage.setItem('username', 'idAsToken');
-}
 
-function gotoMainPage() {
-    const username = sessionStorage.getItem('username');
-    if (username == 'idAsToken') {
-        window.location.href = 'StartPoint/MainPage/mainpage.html';
-        alert(username)
-    } else {
-        alert("로그인 후 사용해주세요.")
-    }
-
-}
 
 async function login(ID, PW) {
 
@@ -63,7 +51,7 @@ async function login(ID, PW) {
 
 
     // sessionStorage.setItem('username', ID);  username이라는 key에 실제 아이디를 value로 저장해서 체크하기
-    sessionStorage.setItem('username', 'idAsToken'); 
+    sessionStorage.setItem('username', 'idAsToken');  /////////////////////////////////
 
     const functionType = 0;
     
@@ -80,6 +68,7 @@ async function login(ID, PW) {
     
     if (loginExists == '1') {
         alert("로그인 되었습니다!");
+        window.location.href = 'StartPoint/MainPage/mainpage.html'; ///////////////////////////////
     
     } else {
         alert("일치하는 정보가 없습니다.")
