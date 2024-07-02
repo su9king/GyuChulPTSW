@@ -1,6 +1,6 @@
 const express = require('express');
 const connection = require('./DB');
-
+var sessionToken = []
 // 회원가입 함수
 async function registerUser(ID, PW) {
     //Promise 키워드 정보 추가 조사 필요.

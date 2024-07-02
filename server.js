@@ -35,6 +35,7 @@ app.post('/execute',async (req,res) => {
 
 app.get('/mainPageOrder', async (req,res) => {
     const functionType = req.query.functionType;
+    const Token = req.query.Token;
     
     const result = await mainPageOrder(functionType,Token)
 
