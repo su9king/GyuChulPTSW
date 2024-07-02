@@ -4,6 +4,7 @@ const socketIo = require('socket.io');
 const path = require('path');
 const connection = require('./DB');
 
+
 //indexTest 코드에서 login,register,checkData 함수 불러오기
 const { executeMain } = require('./indexByChul');
 
@@ -15,7 +16,7 @@ const io = socketIo(server);
 app.use(express.urlencoded({ extended: true }));
 // 리소스 제공
 app.use(express.static(path.join(__dirname, 'StartPoint')));
-
+app.use(express.static(path.join(__dirname, 'StartPoint/MainPage')));
 
 
 // 루트 경로에서 index.html 제공

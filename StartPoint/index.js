@@ -36,11 +36,34 @@ function getInfo() {
     });
 }
 
+function expireSession() {
+    sessionStorage.removeItem('username');
+}
+
+function makeSession() {
+    sessionStorage.setItem('username', 'idAsToken');
+}
+
+function gotoMainPage() {
+    const username = sessionStorage.getItem('username');
+    if (username == 'idAsToken') {
+        window.location.href = 'StartPoint/MainPage/mainpage.html';
+        alert(username)
+    } else {
+        alert("로그인 후 사용해주세요.")
+    }
+
+}
+
 async function login(ID, PW) {
 
 
     var ID = document.getElementById('ID').value;
     var PW = document.getElementById('PW').value;
+
+
+    // sessionStorage.setItem('username', ID);  username이라는 key에 실제 아이디를 value로 저장해서 체크하기
+    sessionStorage.setItem('username', 'idAsToken'); 
 
     const functionType = 0;
     
