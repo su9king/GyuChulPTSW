@@ -56,9 +56,6 @@ async function login(ID, PW) {
     var ID = document.getElementById('ID').value;
     var PW = document.getElementById('PW').value;
 
-
-    // sessionStorage.setItem('username', ID);  username이라는 key에 실제 아이디를 value로 저장해서 체크하기
-
     const functionType = 0;
     
     const response = await fetch('execute', {
@@ -68,13 +65,13 @@ async function login(ID, PW) {
     });
 
     const loginExists = await response.json();
-    sessionStorage.setItem('username', loginExists[1]);  /////////////////////////////////
+    sessionStorage.setItem('username', loginExists[1]); 
 
     // loginExists : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
     
     if (loginExists[0] == '1') {
         alert("로그인 되었습니다!");
-        window.location.href = 'StartPoint/MainPage/mainpage.html'; ///////////////////////////////
+        window.location.href = 'StartPoint/MainPage/mainpage.html'; 
     
     } else {
         alert("일치하는 정보가 없습니다.")
