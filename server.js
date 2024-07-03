@@ -43,7 +43,7 @@ app.get('/mainPageOrder', async (req,res) => {
     const Token = req.query.Token;
     
     const result = await mainPageOrder(functionType,Token)
-
+    res.json(result);
 })
 
 
