@@ -1,4 +1,4 @@
-window.onload = async function() {
+/*window.onload = async function() {
     // 로그인 상태 확인
     const isLoggedIn = sessionStorage.getItem('username');
     if (isLoggedIn !== 'true') {
@@ -8,7 +8,7 @@ window.onload = async function() {
     else {
         userData()
     }
-}
+}*/
 
 const username = sessionStorage.getItem('username');
 
@@ -29,6 +29,9 @@ async function userData() {
             sessionStorage.setItem('authority1', 0);
             sessionStorage.setItem('grouprname2', 2); 
             sessionStorage.setItem('authority2', 1);
+
+            createButtons(data);
+
         } else {
             console.error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
         }
@@ -37,23 +40,58 @@ async function userData() {
     }
 }
 
-// groupname1, 2에 대한 버튼 노출
-const visibleButtonId = '1'; // 버튼 1를 보이게 설정
+//document.addEventListener('DOMContentLoaded', function() {
 
-document.addEventListener('DOMContentLoaded', () => {
 
-    const buttons = document.querySelectorAll('.group-button');
 
-    buttons.forEach(button => {
-        const buttonId = button.id;
-
-        if (buttonId === visibleButtonId) {
-            button.style.display = 'inline-block';
-        } else {
-            button.style.display = 'none';
+    // 세션에 저장된 'groupname'으로 시작하는 값들 저장
+    function getGroupNames() {
+        const groupNames = [];
+        
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            const trimmedKey = key.trim();
+            console.log(key);
+            // 키가 'groupname'으로 시작하는 경우
+            if (trimmedKey.startsWith('groupname')) {
+                groupNames.push(sessionStorage.getItem(trimmedKey));
+                console.log('true')
+            }
+            else {
+                console.log(trimmedKey.startsWith('groupname'))
+            }
         }
-    });
-});
+        console.log(groupNames);
+        return groupNames;
+    }
+
+    // 버튼 생성
+    function createButtons(groupNames) {
+        const buttonContainer = document.getElementById('button-container');
+        buttonContainer.innerHTML = '';
+
+        groupNames.forEach((number, index) => {
+            const button = document.createElement('button');
+            button.textContent = `Button ${number}`;
+            button.addEventListener('click', () => {
+                alert(`Button ${number} clicked`);
+                // 해당 그룹 페이지로 넘어가는 코드 추가 필요
+            });
+            buttonContainer.appendChild(button);
+        });
+    }
+
+function test() {
+    sessionStorage.setItem('groupname1', 1); 
+    sessionStorage.setItem('authority1', 0);
+    sessionStorage.setItem('groupname2', 5); 
+    sessionStorage.setItem('authority2', 1);
+    console.log(sessionStorage.length);
+    // DOM이 로드된 후 세션 스토리지에서 그룹 이름들을 가져와 버튼 생성
+    const groupNames = getGroupNames();
+    createButtons(groupNames);
+}
+//});
 
 
 
