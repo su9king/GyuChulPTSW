@@ -21,7 +21,7 @@ async function userData() {
         });
 
         if (response.ok) {
-            data = response.json;
+            data = await response.json();
             console.log(data)
             /*const data = await response.json();
             for(let i = 0; i < data.length; i++) {
