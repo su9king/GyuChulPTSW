@@ -58,12 +58,13 @@ function getGroupNames() {
 function createButtons(groupNames) {
     const buttonContainer = document.getElementById('button-container');
     buttonContainer.innerHTML = '';
+    console.log(groupNames)
 
-    groupNames.forEach((groupID, index) => {
+    groupNames.forEach((name, index) => {
         const button = document.createElement('button');
-        button.textContent = `Button ${groupID}`;
+        button.textContent = `Button ${name}`;
         button.addEventListener('click', () => {
-            alert(`group ${groupID} selected`);
+            alert(`group ${name} selected`);
             gotoGroupPage(index);
         });
         buttonContainer.appendChild(button);
