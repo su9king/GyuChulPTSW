@@ -23,6 +23,7 @@ async function userData() {
         if (response.ok) {
 
             const data = await response.json();
+            console.log(data)
             for(let i = 0; i < data.length; i++) {
                 sessionStorage.setItem('grouprname'+ i, data[i][0]); 
                 sessionStorage.setItem('authority'+ i, data[i][1]);
