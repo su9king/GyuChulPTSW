@@ -3,10 +3,13 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
 const connection = require('./DB');
-
+var sessionToken = [];
+module.exports = sessionToken;
 
 //indexTest 코드에서 login,register,checkData 함수 불러오기
-const { executeMain } = require('./indexByChul');
+const { accessMain } = require('./accessModule');
+const { mainPageOrder } = require('./mainPageOrder');
+
 
 
 const app = express();
@@ -26,11 +29,21 @@ app.get('/', (req, res) => {
 
 // 서버측에서 해당 코드들 진행
 app.post('/execute',async (req,res) => {
+    console.log(sessionToken);
     const { functionType, ID, PW , Token } = req.body;
-    const result = await executeMain(functionType,ID,PW,Token)
+    const result = await accessMain(functionType,ID,PW,Token)
     res.json(result);
+
     
 });
+
+app.get('/mainPageOrder', async (req,res) => {
+    const functionType = req.query.functionType;
+    const Token = req.query.Token;
+    
+    const result = await mainPageOrder(functionType,Token)
+    res.json(result);
+})
 
 
 const PORT = process.env.PORT || 3000;
