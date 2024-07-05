@@ -22,7 +22,7 @@ async function mainPageOrder(query) {
         const groupID = query["groupID"];
         return new Promise ((resolve,reject) => {
 
-            resolve(5);
+            resolve({'value':"현재 구현된 로직이 없습니다."});
 
         })
        
