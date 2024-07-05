@@ -20,11 +20,7 @@ async function mainPageOrder(query) {
         })
     }else if(functionType == 2){
         const groupID = query["groupID"];
-        return new Promise ((resolve,reject) => {
-            const test = "No Logic"
-            resolve(test);
-            
-        })
+        return "No Logic"
        
     }
 }
