@@ -61,7 +61,7 @@ function createButtons(groupNames) {
 
     groupNames.forEach((groupID, index) => {
         const button = document.createElement('button');
-        button.textContent = `Button ${index}`;
+        button.textContent = `Button ${groupID}`;
         button.addEventListener('click', () => {
             alert(`group ${groupID} selected`);
             gotoGroupPage(index);
