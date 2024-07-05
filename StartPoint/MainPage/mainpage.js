@@ -84,7 +84,7 @@ async function gotoGroupPage(groupId) {
 
                 if (response.ok) {
                     
-                    console.log(response); 
+                    console.log(response.json()); 
                     //window.location.href = '/groupChannel/HoneyButterChip.html'; 
                     
                 } else {
