@@ -9,7 +9,7 @@ async function mainPageOrder(functionType,Token) {
     if (functionType == 1){ //조직 노출을 위한 사용자가 속한 조직 데이터 제공
 
         return new Promise((resolve,reject) => {
-            connection.query('SELECT groupID FROM user_groups WHERE userID = ?', [Token],
+            connection.query('SELECT ug.groupID, ug.permission, og.groupName FROM user_groups as ug , organizations as og WHERE userID = ?;', [Token],
                 (error, results, fields) => {
                     console.log(results)
                     resolve(results);
