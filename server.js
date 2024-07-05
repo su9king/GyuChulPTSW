@@ -41,9 +41,10 @@ app.get('/mainPageOrder', async (req,res) => {
     console.log("GET요청 성공")
     const functionType = req.query.functionType;
     const Token = req.query.user;
-    console.log(functionType,Token);
+    
     const result = await mainPageOrder(functionType,Token)
     res.json(result);
+    console.log(result);
 })
 
 

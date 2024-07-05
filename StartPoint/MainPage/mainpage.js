@@ -21,7 +21,8 @@ async function userData() {
         });
 
         if (response.ok) {
-            console.log(response.json)
+            data = response.json;
+            console.log(data[0]["groupID"])
             /*const data = await response.json();
             for(let i = 0; i < data.length; i++) {
                 sessionStorage.setItem('grouprname'+ i, data[i][0]); 
