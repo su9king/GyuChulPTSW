@@ -1,7 +1,7 @@
 window.onload = async function() {
     // 로그인 상태 확인
     const isLoggedIn = sessionStorage.getItem('username');
-    if (isLoggedIn == 'true') {
+    if (isLoggedIn == 'false') {
         // 로그인되지 않은 경우 로그인 페이지로 리디렉션
         window.location.href = 'StartPoint/index.html';
     }
@@ -21,6 +21,7 @@ async function userData() {
         });
 
         if (response.ok) {
+            console.log(response)
             /*const data = await response.json();
             for(let i = 0; i < data.length; i++) {
                 sessionStorage.setItem('grouprname'+ i, data[i][0]); 

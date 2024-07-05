@@ -36,8 +36,9 @@ app.post('/execute',async (req,res) => {
 
     
 });
-
+//title.html?fuctionType=${int}&username=${encodedIndex}&content=${encodedContent}
 app.get('/mainPageOrder', async (req,res) => {
+    console.log("GET요청 성공")
     const functionType = req.query.functionType;
     const Token = req.query.Token;
     
