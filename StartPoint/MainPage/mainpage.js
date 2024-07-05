@@ -21,19 +21,13 @@ async function userData() {
         });
 
         if (response.ok) {
-            data = await response.json();
-            console.log(data)
-            /*const data = await response.json();
+
+            const data = await response.json();
             for(let i = 0; i < data.length; i++) {
                 sessionStorage.setItem('grouprname'+ i, data[i][0]); 
                 sessionStorage.setItem('authority'+ i, data[i][1]);
-            }*/
-            ///////////////////////// 세션에 데이터를 저장할 때, key의 이름을 groupname+'실제 그룹 아이디'로 저장하는 것이 베스트
-            ///////////////////////// 이유는 아래 gotoGroupPage()를 설정할 때 쿼리에 authority 값을 불러오는데 훨씬 유용함(85번째 줄 추가 주석 있음)
-            sessionStorage.setItem('grouprname1', 1);   /////////////////////////test data/////////////////////////
-            sessionStorage.setItem('authority1', 0);
-            sessionStorage.setItem('grouprname2', 2); 
-            sessionStorage.setItem('authority2', 1);
+            }
+            
         } else {
             console.error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
         }
