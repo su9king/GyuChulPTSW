@@ -6,7 +6,7 @@ module.exports = { mainPageOrder };
 
 async function mainPageOrder(query) {
 
-    const fuctionType = query["functionType"];
+    const functionType = query["functionType"];
 
     if (functionType == 1){ //조직 노출을 위한 사용자가 속한 조직 데이터 제공
         const Token = query["user"];

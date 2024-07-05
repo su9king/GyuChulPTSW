@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 window.onload = async function() {
     // 로그인 상태 확인
     const isLoggedIn = sessionStorage.getItem('username');
@@ -25,7 +23,6 @@ async function userData() {
         if (response.ok) {
 
             const data = await response.json();
-            console.log(JSON.stringify(data[i]))
             for(let i = 0; i < data.length; i++) {
                 sessionStorage.setItem('groupIndex'+ i, JSON.stringify(data[i])); 
             }
@@ -43,7 +40,7 @@ function getGroupNames() {
     const groupNames = [];
     
     for (let i = 0; i < sessionStorage.length; i++) {
-        const key = JSON.parsesessionStorage.key(i);
+        const key = JSON.parse(sessionStorage.key(i));
         // 키가 'groupIndex'으로 시작하는 경우
         if (key.startsWith('groupIndex')) {
             let buffer = JSON.parse(key)
