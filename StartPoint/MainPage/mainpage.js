@@ -45,7 +45,7 @@ function getGroup() {
         // 키가 'groupIndex'으로 시작하는 경우
         if (key.startsWith('groupIndex')) {
             let buffer = JSON.parse(sessionStorage.getItem(key))
-            groupNames.push(buffer);
+            groups.push(buffer);
         }
         else {
             console.log(key.startsWith('groupIndex'))
