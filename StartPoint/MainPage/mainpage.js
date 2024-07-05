@@ -16,7 +16,7 @@ const username = sessionStorage.getItem('username');
 
 async function userData() {
     try {        
-        const response = await fetch('mainPageOrder?fuctionType=1&user=${username}', { //쿼리에 아이디 포함
+        const response = await fetch(`mainPageOrder?fuctionType=1&user=${username}`, { //쿼리에 아이디 포함
             method: 'GET'
         });
 
