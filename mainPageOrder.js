@@ -10,7 +10,7 @@ async function mainPageOrder(functionType,Token) {
     	console.log(Token);
         connection.query('SELECT groupID FROM user_groups WHERE userID = ?', [Token],
             (error, results, fields) => {
-                
+                console.log(results)
                 return results
         
 
