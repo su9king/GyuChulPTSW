@@ -7,8 +7,8 @@ window.onload = async function() {
     }
     else {
         userData()
-        const groupNames = getGroupNames();
-        createButtons(groupNames);
+        const groups = getGroup();
+        createButtons(groups);
     }
 }
 
@@ -36,8 +36,8 @@ async function userData() {
 }
 
 // 세션에 저장된 'groupname'으로 시작하는 값들 저장
-function getGroupNames() {
-    const groupNames = [];
+function getGroup() {
+    const groups = [];
     
     for (let i = 0; i < sessionStorage.length; i++) {
 
@@ -45,27 +45,28 @@ function getGroupNames() {
         // 키가 'groupIndex'으로 시작하는 경우
         if (key.startsWith('groupIndex')) {
             let buffer = JSON.parse(sessionStorage.getItem(key))
-            groupNames.push(buffer['groupName']);
+            groupNames.push(buffer);
         }
         else {
-            console.log(key.startsWith('groupInedx'))
+            console.log(key.startsWith('groupIndex'))
         }
     }
-    return groupNames;
+    return groups;
 }
 
 // 버튼 생성
-function createButtons(groupNames) {
+function createButtons(groups) {
     const buttonContainer = document.getElementById('button-container');
     buttonContainer.innerHTML = '';
-    console.log(groupNames)
-
-    groupNames.forEach((name, index) => {
+    
+    console.log(groups)
+    groups.forEach((group, index) => {
+        console.log(group);
         const button = document.createElement('button');
-        button.textContent = `Button ${name}`;
+        button.textContent = `Button ${group['groupName']}`;
         button.addEventListener('click', () => {
-            alert(`group ${name} selected`);
-            gotoGroupPage(index);
+            alert(`group ${group['groupName']} selected`);
+            gotoGroupPage(group['groupID']);
         });
         buttonContainer.appendChild(button);
     });
