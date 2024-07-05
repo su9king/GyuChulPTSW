@@ -43,8 +43,8 @@ app.get('/mainPageOrder', async (req,res) => {
     const Token = req.query.user;
     
     const result = await mainPageOrder(functionType,Token)
-    res.json(result);
     console.log(result);
+    res.json(result);
 })
 
 
