@@ -20,6 +20,6 @@ async function mainPageOrder(query) {
         })
     }else if(functionType == 2){
         const groupID = query["groupID"];
-        return(groupID,"아직 정해진 로직이 없습니다.")
+        return ("아직 정해진 로직이 없습니다.")
     }
 }
