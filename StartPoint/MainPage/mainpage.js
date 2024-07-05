@@ -40,11 +40,11 @@ function getGroupNames() {
     const groupNames = [];
     
     for (let i = 0; i < sessionStorage.length; i++) {
-        
+
         const key = sessionStorage.key(i);
         // 키가 'groupIndex'으로 시작하는 경우
         if (key.startsWith('groupIndex')) {
-            let buffer = JSON.parse(key)
+            let buffer = JSON.parse(sessionStorage.getItem(key))
             groupNames.push(buffer['groupName']);
         }
         else {
