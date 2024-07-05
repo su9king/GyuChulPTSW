@@ -20,10 +20,13 @@ async function mainPageOrder(query) {
         })
     }else if(functionType == 2){
         const groupID = query["groupID"];
-        return new Promise ((resolve,reject) => {
-
-            resolve({'value':"현재 구현된 로직이 없습니다."});
-
+        return new Promise((resolve,reject) => {
+            connection.query('SELECT * FROM organizations',
+                (error, results, fields) => {
+                    console.log(results)
+                    resolve(results);
+                }
+            )
         })
        
     }
