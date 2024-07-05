@@ -83,6 +83,8 @@ async function gotoGroupPage(groupId) {
                 if (response.ok) {
                     const response = await response.json();
                     console.log(response); 
+                    window.location.href = '/groupChannel/HoneyButterChip.html'; 
+                    
                 } else {
                     console.error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
                 }
