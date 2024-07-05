@@ -78,7 +78,7 @@ async function gotoGroupPage(groupId) {
             try {
                 const username = sessionStorage.getItem('username'); // 세션에서 유저 이름 가져오기
                 //const authority = sessionStorage.getItem(`authority${groupId}`); ////////////// 이 부분에서 그룹 아이디에 맞는 groupname+숫자 를 찾고, 그에 맞는 authority를 다시 찾는 로직이 필요해짐
-                const response = await fetch(`/mainPageOrder?fuctionType=2&user=${username}&groupID=${groupId}`, {
+                const response = await fetch(`/mainPageOrder?functionType=2&user=${username}&groupID=${groupId}`, {
                     method: 'GET'
                 });
 

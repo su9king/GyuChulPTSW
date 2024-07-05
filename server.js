@@ -42,7 +42,6 @@ app.get('/mainPageOrder', async (req,res) => {
     const query = req.query;
     
     const result = await mainPageOrder(query)
-    console.log(result)
     res.json(result);
 })
 
