@@ -2,7 +2,7 @@
 var groupId = sessionStorage.getItem(key.startsWith('groupname'));
 var clientAuthority = sessionStorage.getItem(key.startsWith('authority')); // 1이면 글 작성 버튼 노출, 0이면 글 확인 버튼만 노출
 
-const postData = await fetch('/loadContents', {
+const postData = await fetch('/postsOrder?functionType=1', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'

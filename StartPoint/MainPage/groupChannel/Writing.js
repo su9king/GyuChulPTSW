@@ -11,7 +11,7 @@ function save(){
         };*/
 
         // 서버로 데이터 전송.response 를 담을 변수를 사용하지 않은 이유는..그냥 한번 이렇게도 해봐야지!
-        fetch('/save', {
+        fetch('/postsOrder?functionType=2', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

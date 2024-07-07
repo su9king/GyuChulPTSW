@@ -27,4 +27,16 @@ async function getAllPosts() {
     });
 }
 
-module.exports = { newPosts, getAllPosts };
+module.exports = { postsOrder };
+
+async function postsOrder(query, title, content) {
+  const functionType = query["functionType"];
+
+  if (functionType == 1) {
+    getAllPosts();
+  }
+  else {
+    newPosts(title, content);
+  }
+
+}
