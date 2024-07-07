@@ -74,7 +74,7 @@ function createButtons(groups) {
 }
 
 
-async function gotoGroupPage(groupId) {
+async function gotoGroupPage(groupID) {
     // 그룹에 대한 데이터 전부 가져오기; 쿼리에 유저아이디, 그룹아이디 포함, 권한 포함
     // 선택한 그룹 데이터를 제외하고 
             try {
