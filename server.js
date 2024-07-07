@@ -36,10 +36,10 @@ app.post('/execute',async (req,res) => {
 });
 
 app.get('/mainPageOrder', async (req,res) => {
-    const functionType = req.query.functionType;
-    const Token = req.query.Token;
+    console.log("GET요청 성공")
+    const query = req.query;
     
-    const result = await mainPageOrder(functionType,Token)
+    const result = await mainPageOrder(query)
     res.json(result);
 })
 
