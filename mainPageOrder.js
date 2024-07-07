@@ -9,7 +9,7 @@ async function mainPageOrder(query) {
     const functionType = query["functionType"];
 
     if (functionType == 1){ //조직 노출을 위한 사용자가 속한 조직 데이터 제공
-        const Token = query["user"];
+        const Token = query["userID"];
         return new Promise((resolve,reject) => {
             connection.query('SELECT ug.groupID, ug.permission, og.groupName FROM user_groups as ug , organizations as og WHERE userID = ? and og.groupID = ug.groupID;', [Token],
                 (error, results, fields) => {
@@ -20,7 +20,14 @@ async function mainPageOrder(query) {
         })
     }else if(functionType == 2){
         const groupID = query["groupID"];
-        return "No Logic"
+        return new Promise((resolve,reject) => {
+            connection.query('SELECT postID,title,content FROM posts WHERE groupID = ?', [groupID],
+                (error, results, fields) => {
+                    console.log(results)
+                    resolve(results);
+                }
+            )
+        })
        
     }
 }

@@ -44,7 +44,7 @@ async function logout() { ///////////////////////////////
         headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
         body: `functionType=${functionType}&Token=${sessionStorage.getItem('username')}`
     });
-    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userID');
     alert('로그아웃되었습니다!')
 }
 
@@ -65,7 +65,7 @@ async function login(ID, PW) {
     });
 
     const loginExists = await response.json();
-    sessionStorage.setItem('username', loginExists[1]); 
+    sessionStorage.setItem('userID', loginExists[1]); 
 
     // loginExists : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
     

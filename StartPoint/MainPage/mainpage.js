@@ -1,6 +1,6 @@
 window.onload = async function() {
     // 로그인 상태 확인
-    const isLoggedIn = sessionStorage.getItem('username');
+    const isLoggedIn = sessionStorage.getItem('userID');
     if (isLoggedIn == false) {
         // 로그인되지 않은 경우 로그인 페이지로 리디렉션
         window.location.href = 'StartPoint/index.html';
@@ -9,14 +9,15 @@ window.onload = async function() {
         userData()
         const groups = getGroup();
         createButtons(groups);
+        location.reload();
     }
 }
 
-const username = sessionStorage.getItem('username');
+const userID = sessionStorage.getItem('userID');
 
 async function userData() {
     try {        
-        const response = await fetch(`/mainPageOrder?functionType=1&user=${username}`, { //쿼리에 아이디 포함
+        const response = await fetch(`/mainPageOrder?functionType=1&userID=${userID}`, { //쿼리에 아이디 포함
             method: 'GET'
         });
 
@@ -75,16 +76,17 @@ function createButtons(groups) {
 
 async function gotoGroupPage(groupId) {
     // 그룹에 대한 데이터 전부 가져오기; 쿼리에 유저아이디, 그룹아이디 포함, 권한 포함
+    // 선택한 그룹 데이터를 제외하고 
             try {
-                const username = sessionStorage.getItem('username'); // 세션에서 유저 이름 가져오기
+                const userID = sessionStorage.getItem('userID'); // 세션에서 유저 이름 가져오기
                 //const authority = sessionStorage.getItem(`authority${groupId}`); ////////////// 이 부분에서 그룹 아이디에 맞는 groupname+숫자 를 찾고, 그에 맞는 authority를 다시 찾는 로직이 필요해짐
-                const response = await fetch(`/mainPageOrder?functionType=2&user=${username}&groupID=${groupId}`, {
+                const response = await fetch(`/mainPageOrder?functionType=2&userID=${userID}&groupID=${groupID}`, {
                     method: 'GET'
                 });
 
                 if (response.ok) {
                     const data = await response.text();
-                    console.log(data); 
+                     
                     window.location.href = '/groupChannel/HoneyButterChip.html'; 
                     console.log(data); 
                     
@@ -99,7 +101,7 @@ async function gotoGroupPage(groupId) {
 
 
 function logoutInMainPage() {
-    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userID');
     sessionStorage.clear();
     window.location.href = 'StartPoint/index.html';
 }
