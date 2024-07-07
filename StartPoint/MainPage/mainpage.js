@@ -76,7 +76,7 @@ function createButtons(groups) {
 
 async function gotoGroupPage(groupID) {
     // 그룹에 대한 데이터 전부 가져오기; 쿼리에 유저아이디, 그룹아이디 포함, 권한 포함
-    // 선택한 그룹 데이터를 제외하고 
+    // 세션 데이터 정리가 필요함. 선택한 groupID 를 제외한 조직 데이터 제거 필요
             try {
                 const userID = sessionStorage.getItem('userID'); // 세션에서 유저 이름 가져오기
                 //const authority = sessionStorage.getItem(`authority${groupId}`); ////////////// 이 부분에서 그룹 아이디에 맞는 groupname+숫자 를 찾고, 그에 맞는 authority를 다시 찾는 로직이 필요해짐
@@ -85,9 +85,12 @@ async function gotoGroupPage(groupID) {
                 });
 
                 if (response.ok) {
-                    const data = await response.text();
+                    const data = await response.json();
+                    for(let i = 0; i < data.length; i++) {
+                        sessionStorage.setItem('postIndex'+ i, JSON.stringify(data[i])); 
+                    }
                      
-                    window.location.href = '/groupChannel/HoneyButterChip.html'; 
+                    window.location.href = 'groupChannel/HoneyButterChip.html'; 
                     console.log(data); 
                     
                 } else {
