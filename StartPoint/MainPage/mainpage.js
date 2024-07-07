@@ -9,7 +9,7 @@ window.onload = async function() {
         userData()
         const groups = getGroup();
         createButtons(groups);
-        location.reload();
+
     }
 }
 
