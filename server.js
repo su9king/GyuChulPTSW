@@ -9,7 +9,7 @@ module.exports = sessionToken;
 //indexTest 코드에서 login,register,checkData 함수 불러오기
 const { accessMain } = require('./accessModule');
 const { mainPageOrder } = require('./mainPageOrder');
-
+const { getAllPosts, newPosts } = require('StartPoint/MainPage/groupChannel/postsOrder.js')
 
 
 const app = express();
@@ -33,8 +33,6 @@ app.post('/execute',async (req,res) => {
     const { functionType, ID, PW , Token } = req.body;
     const result = await accessMain(functionType,ID,PW,Token)
     res.json(result);
-
-    
 });
 
 app.get('/mainPageOrder', async (req,res) => {
@@ -44,6 +42,17 @@ app.get('/mainPageOrder', async (req,res) => {
     const result = await mainPageOrder(functionType,Token)
     res.json(result);
 })
+
+app.post('/save', async (req, res) => {
+    const { title, content } = req.body;
+    const newPost = await newPosts(title, content)
+    res.status(201).json(newPost);
+});
+
+app.post('/loadContents', (req, res) => {
+    const results = getAllPosts();
+    res.json(results);
+});
 
 
 const PORT = process.env.PORT || 3000;
