@@ -4,7 +4,7 @@ const connection = require('./DB');
 async function newPosts(title, content,groupID) {
     return new Promise((resolve, reject) => {
         connection.query(
-            `INSERT INTO posts (title, content,groupID) VALUES (?, ?,?)`,
+            `INSERT INTO posts (title, content,groupID) VALUES (?, ?, ?)`,
             [title, content,groupID],
             (err, result) => {
                 if (err) {
@@ -32,14 +32,14 @@ async function getAllPosts() {
 
 module.exports = { postsOrder };
 
-async function postsOrder(query, title, content) {
+async function postsOrder(query, title, content,groupID) {
   const functionType = query["functionType"];
 
   if (functionType == 1) {
     getAllPosts();
   }
   else {
-    newPosts(title, content);
+    newPosts(title, content,groupID);
   }
 
 }
