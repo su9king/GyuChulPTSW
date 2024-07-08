@@ -47,7 +47,7 @@ app.post('/postsOrder', async (req, res) => {
     const data = req.body;
 
     const results = await postsOrder(data)
-    res = results;
+    res.json(results);
 });
 
 

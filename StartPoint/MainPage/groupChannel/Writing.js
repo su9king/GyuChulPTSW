@@ -6,10 +6,6 @@ function save(){
     console.log(groupID)
     //해당 조건문은 title,content 값이 존재할때 작동하기 위한 조건문.
     if (title && content) {
-        /*var postData = {
-            title: title,
-            content: content
-        };*/
         console.log(groupID)
         // 서버로 데이터 전송.response 를 담을 변수를 사용하지 않은 이유는..그냥 한번 이렇게도 해봐야지!
         fetch('/postsOrder', {
