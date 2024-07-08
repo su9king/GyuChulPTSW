@@ -1,8 +1,8 @@
 function save(){
     var title = document.getElementById('title').value;
     var content = document.getElementById('content').value;
-    var groupID = sessionStorage.getItem('groupID').value;
-    var userID = sessionStorage.getItem('userID').value;
+    var groupID = sessionStorage.getItem('groupID');
+    var userID = sessionStorage.getItem('userID');
     console.log(groupID)
     //해당 조건문은 title,content 값이 존재할때 작동하기 위한 조건문.
     if (title && content) {
