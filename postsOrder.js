@@ -18,9 +18,10 @@ async function newPosts(title, content,groupID) {
     });
 }
 
-async function getAllPosts() {
+async function getAllPosts(groupID) {
     return new Promise((resolve, reject) => {
-      connection.query(`SELECT * FROM posts`, (err, results) => {
+      connection.query(`SELECT * FROM posts WHERE groupID = ?`,[groupID],
+         (err, results) => {
         if (err) {
           console.error('쿼리 실행 오류:', err);
           return reject(err);
@@ -32,13 +33,16 @@ async function getAllPosts() {
 
 module.exports = { postsOrder };
 
-async function postsOrder(query, title, content,groupID) {
-  const functionType = query["functionType"];
+async function postsOrder(data) {
+  const functionType = data.functionType;
+  const groupID = data.groupID;
 
   if (functionType == 1) {
-    getAllPosts();
+    getAllPosts(groupID);
   }
   else {
+    const title = data.title;
+    const content = data.title;
     newPosts(title, content,groupID);
   }
 

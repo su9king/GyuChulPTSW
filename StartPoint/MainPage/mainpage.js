@@ -1,29 +1,40 @@
-// 함수 선언 파트
+window.onload = async function() {
+    // 로그인 상태 확인
+    const isLoggedIn = sessionStorage.getItem('userID');
+    if (isLoggedIn == false) {
+        // 로그인되지 않은 경우 로그인 페이지로 리디렉션
+        window.location.href = 'StartPoint/index.html';
+    }
+    else {
+        userData()
+        const groups = getGroup();
+        createButtons(groups);
 
-function userData() {
-    return fetch(`/mainPageOrder?functionType=1&userID=${userID}`, { // 쿼리에 아이디 포함
-        method: 'GET'
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            console.error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
-            throw new Error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
-        }
-    })
-    .then(data => {
-        for (let i = 0; i < data.length; i++) {
-            sessionStorage.setItem('groupIndex' + i, JSON.stringify(data[i]));
-        }
-        return getGroup();
-    })
-    .catch(error => {
-        console.error('요청 중 오류가 발생했습니다.', error);
-        throw error; 
-    });
+    }
 }
 
+const userID = sessionStorage.getItem('userID');
+
+async function userData() {
+    try {        
+        const response = await fetch(`/mainPageOrder?functionType=1&userID=${userID}`, { //쿼리에 아이디 포함
+            method: 'GET'
+        });
+
+        if (response.ok) {
+
+            const data = await response.json();
+            for(let i = 0; i < data.length; i++) {
+                sessionStorage.setItem('groupIndex'+ i, JSON.stringify(data[i])); 
+            }
+            
+        } else {
+            console.error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('요청 중 오류가 발생했습니다.', error);
+    }
+}
 
 // 세션에 저장된 'groupname'으로 시작하는 값들 저장
 function getGroup() {
@@ -97,23 +108,4 @@ function logoutInMainPage() {
     sessionStorage.removeItem('userID');
     sessionStorage.clear();
     window.location.href = 'StartPoint/index.html';
-}
-///////////////////////////////////////////////////////
-
-///// mainpage.js 메인 실행
-const userID = sessionStorage.getItem('userID');
-const groups = userData();
-
-
-window.onpageshow = async function() {
-    // 로그인 상태 확인
-    const isLoggedIn = sessionStorage.getItem('userID');
-    if (isLoggedIn == false) {
-        // 로그인되지 않은 경우 로그인 페이지로 리디렉션
-        window.location.href = 'StartPoint/index.html';
-    }
-    else {
-        createButtons(groups);
-
-    }
 }

@@ -1,13 +1,15 @@
 // 클라이언트 변수 설정 (실제로는 서버에서 받아올 것) -> 세션에 이미 있는데?!
 var groupId = sessionStorage.getItem(key.startsWith('groupname'));
 var clientAuthority = sessionStorage.getItem(key.startsWith('authority')); // 1이면 글 작성 버튼 노출, 0이면 글 확인 버튼만 노출
+//permission도 세션에 저장 X permission 변수는 항상 서버에 요청해서 데이터를 받아오는 형태로 진행.
+var functionType = 2;
 
-const postData = await fetch('/postsOrder?functionType=1', {
+const postData = await fetch('/postsOrder', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ groupId })
+    body: `functionType=${functionType}&groupID=${groupIdID}`
 })
 .then(response => response.json())
 .then(data => {

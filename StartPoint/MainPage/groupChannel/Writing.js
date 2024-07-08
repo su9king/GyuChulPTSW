@@ -12,12 +12,12 @@ function save(){
         };*/
         console.log(groupID)
         // 서버로 데이터 전송.response 를 담을 변수를 사용하지 않은 이유는..그냥 한번 이렇게도 해봐야지!
-        fetch(`/postsOrder?functionType=2&groupID=${groupID}&userID=${userID}`, {
+        fetch('/postsOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `title=${title}&content=${content}&groupID=${groupID}`
+            body: `title=${title}&content=${content}&groupID=${groupID}&functionType=1`
         })
         .then(response => response.json()) //then 이 두번 사용된 이유는, response 를 json 형태로 파싱한 후, 이 값을
         //이어서 다음 then 에 사용할 수 있음. 즉 .then(data) 는 바로 위에 response 와 같은 값이 들어 있지만 맥락상 
