@@ -14,7 +14,8 @@ async function login(ID, PW) {
     const loginExists = await response.json();
     sessionStorage.setItem('userID', loginExists[1]);
 
-    // loginExists : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
+    // loginExists[0] : 1 (아이디가 존재하며,비밀번호가 정확함) / : 0 (아이디가 존재하지 않거나, 비밀번호가 틀림)
+    // loginExists[1] : 로그인한 개인 식별번호 
     
     if (loginExists[0] == '1') {
         alert("로그인 되었습니다!");

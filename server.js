@@ -7,9 +7,9 @@ var sessionToken = [];
 module.exports = sessionToken;
 
 //indexTest 코드에서 login,register,checkData 함수 불러오기
-const { accessMain } = require('./accessModule');
-const { mainPageOrder } = require('./mainPageOrder');
-const { postsOrder } = require('./postsOrder.js')
+const { accessMain } = require('./AccessModule');
+const { mainPageOrder } = require('./MainPageOrder');
+const { postsOrder } = require('./PostsOrder')
 
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'StartPoint')));
 
 // 루트 경로에서 index.html 제공
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'StartPoint', 'index.html'));
+    res.sendFile(path.join(__dirname, 'StartPoint', 'Login.html'));
 });
 
 

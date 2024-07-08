@@ -31,6 +31,6 @@ function showContent(data){
     const encodedIndex = encodeURIComponent(data['postID']);
     const encodedContent = encodeURIComponent(data['content']);
 
-    const url = `title.html?title=${encodedTitle}&index=${encodedIndex}&content=${encodedContent}`;
+    const url = `post.html?title=${encodedTitle}&index=${encodedIndex}&content=${encodedContent}`;
     window.location.href = url;
 }
