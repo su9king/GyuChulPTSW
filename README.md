@@ -9,3 +9,4 @@
 3. 2024.06.28(금) : gyu02 브랜치(base in Chul01) → Main 브랜치 병합 실시 : kakao Login을 통해 사용자 정보 획득.
 4. 2024.07.01(월) : main 브랜치 정리 : PT06 작업을 위한 리소스 정리 실시.
 5. 2024.07.08(월) : PT06 작업 완료 : mainPage, groupChannel 페이지 개발 완료.
+6. 2024.07.09(화) : PT07 naming convention - 파일이름 수정
