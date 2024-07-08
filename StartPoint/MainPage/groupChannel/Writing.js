@@ -17,7 +17,7 @@ function save(){
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title, content , groupID })
+            body: `title=${title}&content=${content}&groupID=${groupID}`
         })
         .then(response => response.json()) //then 이 두번 사용된 이유는, response 를 json 형태로 파싱한 후, 이 값을
         //이어서 다음 then 에 사용할 수 있음. 즉 .then(data) 는 바로 위에 response 와 같은 값이 들어 있지만 맥락상 
