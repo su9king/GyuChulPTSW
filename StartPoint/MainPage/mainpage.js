@@ -1,19 +1,4 @@
-window.onload = async function() {
-    // 로그인 상태 확인
-    const isLoggedIn = sessionStorage.getItem('userID');
-    if (isLoggedIn == false) {
-        // 로그인되지 않은 경우 로그인 페이지로 리디렉션
-        window.location.href = 'StartPoint/index.html';
-    }
-    else {
-        userData()
-        const groups = getGroup();
-        createButtons(groups);
-
-    }
-}
-
-const userID = sessionStorage.getItem('userID');
+// 함수 선언 파트
 
 async function userData() {
     try {        
@@ -108,4 +93,24 @@ function logoutInMainPage() {
     sessionStorage.removeItem('userID');
     sessionStorage.clear();
     window.location.href = 'StartPoint/index.html';
+}
+///////////////////////////////////////////////////////
+
+///// mainpage.js 메인 실행
+
+userData()
+const groups = getGroup();
+const userID = sessionStorage.getItem('userID');
+
+window.onpageshow = async function() {
+    // 로그인 상태 확인
+    const isLoggedIn = sessionStorage.getItem('userID');
+    if (isLoggedIn == false) {
+        // 로그인되지 않은 경우 로그인 페이지로 리디렉션
+        window.location.href = 'StartPoint/index.html';
+    }
+    else {
+        createButtons(groups);
+
+    }
 }
