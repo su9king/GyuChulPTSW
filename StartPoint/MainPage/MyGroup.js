@@ -56,7 +56,7 @@ function createButtons(groups) {
 
 async function gotoGroupPage(groupID) {
             sessionStorage.setItem('groupID', groupID); 
-            window.location.href = 'groupChannel/HoneyButterChip.html'; 
+            window.location.href = 'GroupPage/GroupMain.html'; 
 }
 
 function logoutInMainPage() {

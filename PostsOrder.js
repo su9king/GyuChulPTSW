@@ -22,7 +22,7 @@ async function postsOrder(data) {
   }
   else {
     const title = data.title;
-    const content = data.title;
+    const content = data.content;
     return new Promise((resolve, reject) => {
         connection.query(
             `INSERT INTO posts (title, content,groupID) VALUES (?, ?, ?)`,

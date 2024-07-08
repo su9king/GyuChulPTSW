@@ -19,7 +19,7 @@ async function login(ID, PW) {
     
     if (loginExists[0] == '1') {
         alert("로그인 되었습니다!");
-        window.location.href = '/MainPage/mainpage.html'; 
+        window.location.href = '/MainPage/MyGroup.html'; 
     
     } else {
         alert("일치하는 정보가 없습니다.")
