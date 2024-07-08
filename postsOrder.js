@@ -1,14 +1,14 @@
-async function newPosts(title, content) {
+async function newPosts(title, content,groupID) {
     return new Promise((resolve, reject) => {
         connection.query(
-            `INSERT INTO posts (title, content) VALUES (?, ?)`,
-            [title, content],
+            `INSERT INTO posts (title, content,groupID) VALUES (?, ?,?)`,
+            [title, content,groupID],
             (err, result) => {
                 if (err) {
                     console.error('쿼리 실행 오류:', err);
                     return reject(err);
                 }
-                const newPost = { index: result.insertId, title, content };
+                const newPost = { index: result. insertId, title, content };
                 resolve(newPost);
             }
         );

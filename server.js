@@ -44,10 +44,10 @@ app.get('/mainPageOrder', async (req,res) => {
 })
 
 app.post('/postsOrder', async (req, res) => {
-    const { title, content } = req.body;
+    const { title, content , groupID} = req.body;
     const query = req.query;
 
-    const results = await postsOrder(query, title, content)
+    const results = await postsOrder(query, title, content , groupID)
     res.json(results);
 });
 

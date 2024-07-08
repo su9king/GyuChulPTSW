@@ -18,7 +18,7 @@ const postData = [] // 세션 데이터 불러오기
 if (!postData) {
     console.log('불러온 게시글이 없습니다.')
 } else {
-    const postDataArray = JSON.parse(postData)// JSON 형태 데이터 타입을 JS 객체로 변환
+    const postDataArray = postData// JSON 형태 데이터 타입을 JS 객체로 변환
     
         // 파일 목록을 HTML로 추가
     postDataArray.forEach(function(data) {
