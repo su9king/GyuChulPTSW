@@ -43,7 +43,7 @@ async function postsOrder(data) {
   else {
     const title = data.title;
     const content = data.title;
-    newPosts(title, content,groupID);
+    newPosts(title, content, groupID);
   }
 
 }

@@ -28,9 +28,6 @@ async function registerUser(ID, PW) {
     
 };
     
-    
-
-
 // 로그인 자격 확인
 async function checkCredentials(ID, PW) {
     //Promise 키워드 정보 추가 조사 필요.
@@ -54,8 +51,20 @@ async function checkCredentials(ID, PW) {
         );
     });
 
-
 }
+
+// groupID, 속한 조직 데이터 세션 저장
+async function getDefaultData(userID) {
+    return new Promise((resolve,reject) => {
+        connection.query(`SELECT ug.groupID FROM user_groups as ug , organizations as og WHERE userID = ? and og.groupID = ug.groupID;`, [userID],
+            (error, results, fields) => {
+                console.log(results)
+                resolve(results);
+            }
+        )
+    })
+}
+
 
 
 
@@ -83,7 +92,7 @@ async function accessMain (functionType, ID, PW, Token) {
             }
             console.log(results);
     } 
-)   }else if (functionType == 5) { // 유저 세션 삭제 
+)   } else if (functionType == 5) { // 유저 세션 삭제 
     // 현재 server.js 에 sessionToken 이 존재함. 데이터가 동적으로
     // 불러와 지지 않는다면, 실행 오류 발생할 수 있음.
 	console.log(Token);
