@@ -47,7 +47,7 @@ app.post('/postsOrder', async (req, res) => {
     const { title, content , groupID} = req.body;
     const query = req.query;
 
-    const results = await postsOrder(query, title, content , gro)
+    const results = await postsOrder(query, title, content , groupID)
     res.json(results);
 });
 
