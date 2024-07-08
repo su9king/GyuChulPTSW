@@ -1,25 +1,29 @@
 // 함수 선언 파트
 
-async function userData() {
-    try {        
-        const response = await fetch(`/mainPageOrder?functionType=1&userID=${userID}`, { //쿼리에 아이디 포함
-            method: 'GET'
-        });
-
+function userData() {
+    return fetch(`/mainPageOrder?functionType=1&userID=${userID}`, { // 쿼리에 아이디 포함
+        method: 'GET'
+    })
+    .then(response => {
         if (response.ok) {
-
-            const data = await response.json();
-            for(let i = 0; i < data.length; i++) {
-                sessionStorage.setItem('groupIndex'+ i, JSON.stringify(data[i])); 
-            }
-            
+            return response.json();
         } else {
             console.error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
+            throw new Error(`데이터 요청에 실패했습니다. 상태 코드: ${response.status}`);
         }
-    } catch (error) {
+    })
+    .then(data => {
+        for (let i = 0; i < data.length; i++) {
+            sessionStorage.setItem('groupIndex' + i, JSON.stringify(data[i]));
+        }
+        return getGroup();
+    })
+    .catch(error => {
         console.error('요청 중 오류가 발생했습니다.', error);
-    }
+        throw error; 
+    });
 }
+
 
 // 세션에 저장된 'groupname'으로 시작하는 값들 저장
 function getGroup() {
@@ -97,10 +101,9 @@ function logoutInMainPage() {
 ///////////////////////////////////////////////////////
 
 ///// mainpage.js 메인 실행
-
-userData()
-const groups = getGroup();
 const userID = sessionStorage.getItem('userID');
+const groups = userData();
+
 
 window.onpageshow = async function() {
     // 로그인 상태 확인
