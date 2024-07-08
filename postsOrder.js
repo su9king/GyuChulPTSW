@@ -1,3 +1,6 @@
+const connection = require('./DB');
+
+
 async function newPosts(title, content,groupID) {
     return new Promise((resolve, reject) => {
         connection.query(
