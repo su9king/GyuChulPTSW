@@ -1,0 +1,39 @@
+#nav1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff;
+    z-index: 1000; /* Ensure the navbar is above other elements */
+}
+
+#nav1 ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#nav1 ul li {
+    flex: 1;
+    text-align: center;
+}
+
+#nav1 ul li a,
+#nav1 ul li button {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    width: 100%; /* Ensure the element takes full width of the parent li */
+}
+
+#nav1 ul li a:hover,
+#nav1 ul li button:hover {
+    background-color: #575757;
+}
