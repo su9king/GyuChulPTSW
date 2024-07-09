@@ -67,18 +67,7 @@ async function checkData() {
     console.log(data);
 }
 
-async function logout() {
 
-    const functionType = 5;
-    const response = await fetch('/execute', {
-        method : 'POST',
-        headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
-        body: `functionType=${functionType}&Token=${sessionStorage.getItem('username')}`
-    });
-    sessionStorage.clear();
-    alert('로그아웃되었습니다!')
-
-}
 
 
 /////////////////////////////////////////////////////////
