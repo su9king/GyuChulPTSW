@@ -8,7 +8,7 @@ function logout() {
     });
     sessionStorage.clear();
     alert('로그아웃되었습니다!')
-    window.location.href("StartPoint/Login.html")
+    window.location.href = "/";
 }
 
 function previous(){
