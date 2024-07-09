@@ -27,8 +27,6 @@ app.get('/', (req, res) => {
     
 });
 
-
-
 // 서버측에서 해당 코드들 진행
 app.post('/execute',async (req,res) => {
     console.log("로그인페이지 요청 성공")
