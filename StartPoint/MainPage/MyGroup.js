@@ -1,4 +1,4 @@
-import { loadNavbar,previous } from '/CommonFeatures.js';
+import { loadNavbar } from '/CommonFeatures.js';
 
 window.onload = async function() {
     // 로그인 상태 확인
