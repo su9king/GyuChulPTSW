@@ -1,4 +1,5 @@
-
+import { loadNavbar } from '/CommonFeatures.js';
+loadNavbar();
 
 document.addEventListener("DOMContentLoaded", function() {
 

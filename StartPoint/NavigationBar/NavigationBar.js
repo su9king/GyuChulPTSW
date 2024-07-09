@@ -1,18 +1,12 @@
 
-document.addEventListener("DOMContentLoaded", function() {
-    const navbarHTML = `
-        <nav id="nav1">
-            <ul>
-            <li><button onclick = 'previous()'>Previous</button></li>
-            <li><a href="#">menu2</a></li>
-            <li><a href="#">menu3</a></li>
-            <li><a href="#">menu4</a></li>
-            <li><button onclick = 'logout()'>Logout</button></li>
-            </ul>
-        </nav>
-    `;
-    document.getElementById('navbar').innerHTML = navbarHTML;
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//     fetch('/NavigationOrder')
+//         .then(response => response.text())
+//         .then(data => {
+//             document.getElementById('navbar').innerHTML = data;
+//         })
+//         .catch(error => console.error('Error loading navbar:', error));
+// });
 
 
 function logout() {

@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>본문 내용</title>
+    
 </head>
 <body>
+    <div id="navbar"></div>
     <h1 id="title"></h1>
     <p id="index"></p>
     <p id="content"></p>
 
-    <script>
+    <script type = "module">
+        import { loadNavbar } from '/CommonFeatures.js';
+        loadNavbar();
         const queryString = window.location.search; // 쿼리스트링 가져오기
         const urlParams = new URLSearchParams(queryString); // URL SearchParams 객체 생성
         

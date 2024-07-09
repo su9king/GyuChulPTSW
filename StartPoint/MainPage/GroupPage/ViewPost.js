@@ -1,3 +1,5 @@
+import { loadNavbar } from '/CommonFeatures.js';
+loadNavbar();
 var buttonField = document.getElementById('fileList'); // HTML 버튼 추가할 필드 불러오기
 
 const groupID = sessionStorage.getItem('groupID');

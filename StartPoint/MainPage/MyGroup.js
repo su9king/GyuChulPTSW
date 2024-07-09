@@ -1,3 +1,5 @@
+import { loadNavbar } from '/CommonFeatures.js';
+
 window.onload = async function() {
     // 로그인 상태 확인
     const isLoggedIn = sessionStorage.getItem('userID');
@@ -7,7 +9,10 @@ window.onload = async function() {
     }
     else {
         const userID = sessionStorage.getItem('userID');
-        createButtons(await allGroupList(userID))
+        createButtons(await allGroupList(userID));
+        loadNavbar();
+
+        
     }
 }
 
