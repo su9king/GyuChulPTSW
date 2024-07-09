@@ -70,16 +70,20 @@ async function getDefaultData(userID) {
 
 module.exports = { accessMain };
 
-// 클라이언트 요청 처리
-async function accessMain (functionType, ID, PW, Token) {
+// 클라이언트 요청 처리 functionType, ID, PW, Token 제
+async function accessMain (data) {
+    const functionType = data.functionType; 
 
     if (functionType == 0) { // 로그인 처리
         
+        const ID = data.ID;
+        const PW = data.PW;
         result = await checkCredentials(ID,PW)
         return result;
 
     } else if (functionType == 1) { // 회원가입 처리
-        
+        const ID = data.ID;
+        const PW = data.PW;
         result = await registerUser(ID,PW)
         return result;
 
@@ -95,7 +99,8 @@ async function accessMain (functionType, ID, PW, Token) {
 )   } else if (functionType == 5) { // 유저 세션 삭제 
     // 현재 server.js 에 sessionToken 이 존재함. 데이터가 동적으로
     // 불러와 지지 않는다면, 실행 오류 발생할 수 있음.
-	console.log(Token);
+        const Token = data.Token;
+	    console.log(Token);
         for(var i=0;i < sessionToken.length;i++){
         	if(sessionToken[i] == Token){
         		console.log("DELETE");
