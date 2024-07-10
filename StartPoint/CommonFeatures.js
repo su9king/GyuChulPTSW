@@ -1,6 +1,4 @@
-
-
-export function loadNavbar() {
+function loadNavbar() {
     // 사용 조건: 사용할 HTML 파일에 <div id="navbar"></div>가 존재해야 합니다.
     fetch('/NavigationOrder')
         .then(response => response.text())
@@ -17,3 +15,4 @@ export function loadNavbar() {
         .catch(err => console.error('Error loading additional interface:', err));
 }
 
+window.loadNavbar = loadNavbar;
