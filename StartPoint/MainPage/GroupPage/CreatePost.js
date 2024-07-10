@@ -1,4 +1,7 @@
-loadNavbar();
+window.onload = async function() {
+    loadNavbar();
+}
+
 function save(){
     var title = document.getElementById('title').value;
     var content = document.getElementById('content').value;

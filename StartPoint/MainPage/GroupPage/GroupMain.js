@@ -1,4 +1,6 @@
-loadNavbar();
+window.onload = async function() {
+    loadNavbar();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 

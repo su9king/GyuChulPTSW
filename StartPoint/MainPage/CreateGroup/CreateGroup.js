@@ -1,3 +1,7 @@
+window.onload = async function() {
+    loadNavbar();
+}
+
 var today = new Date();
 var dateString = today.toISOString().split('T')[0];
 
