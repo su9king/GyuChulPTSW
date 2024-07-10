@@ -14,5 +14,6 @@ function logout() {
 
 function previous(){
     window.history.go(-1);
+    
 }
 

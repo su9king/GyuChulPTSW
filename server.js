@@ -10,7 +10,7 @@ module.exports = sessionToken;
 const { accessMain } = require('./AccessModule');
 const { mainPageOrder } = require('./MainPageOrder');
 const { postsOrder } = require('./PostsOrder')
-
+const { createGroupOrder } = require('./creageGroupOrder')
 
 const app = express();
 const server = http.createServer(app);
@@ -57,6 +57,13 @@ app.post('/postsOrder', async (req, res) => {
     const results = await postsOrder(data)
     res.json(results);
 });
+
+app.post('/createGroup', async(req,res) => {
+    const data = req.body;
+    console.log("그룹생성 요청 성공");
+    
+    const results = await createGroupOrder(data);
+})
 
 
 const PORT = process.env.PORT || 3000;
