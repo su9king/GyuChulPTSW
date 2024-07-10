@@ -1,3 +1,6 @@
+var today = new Date();
+var dateString = today.toISOString().split('T')[0];
+
 function save(){
     var newGroupName = document.getElementById('createGroupName').value;
     var newintroduction = document.getElementById('introduction').value;
@@ -11,7 +14,7 @@ function save(){
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `groupName=${newGroupName}&publisherID=${userID}&sportType=${sportsType}&introduction=${newintroduction}`
+            body: `groupName=${newGroupName}&userID=${userID}&sportType=${sportsType}&introduction=${newintroduction}&createdDate=${dateString}`
         })
         .then(response => response.text())
         .then(data => {

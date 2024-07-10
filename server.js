@@ -63,6 +63,7 @@ app.post('/createGroup', async(req,res) => {
     console.log("그룹생성 요청 성공");
     
     const results = await createGroupOrder(data);
+    res.json(results);
 })
 
 

@@ -72,5 +72,5 @@ function logoutInMainPage() {
 
 
 function gotoCreateGroup() {
-    window.location.href = 'CreateGroup/CreateGroup.html'
+    window.location.href = 'CreateGroup/CreateGroup.html';
 }
