@@ -69,3 +69,8 @@ function logoutInMainPage() {
     sessionStorage.clear();
     window.location.href = 'StartPoint/index.html';
 }
+
+
+function gotoCreateGroup() {
+    window.location.href = 'CreateGroup/CreateGroup.html'
+}

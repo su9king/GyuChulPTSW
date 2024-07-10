@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조직 생성하기</title>
+    <link rel="stylesheet" href="CreateGroup.css">
+    <script type="module" src="CreateGroup.js"></script>
+</head>
+<body>
+    <input type="text" id="createGroupName" placeholder="Enter your new Group Name" class="input" required><br/>
+    <!-- 한글 85자, 영어 255자-->
+    <div class="introduction">
+        <textarea id="introduction" name="introduction" placeholder="Introduction of new Group / Not necessary"></textarea>
+        <!-- <div class="count"><span>0</span>/85</div> -->
+    </div>
+    <select name="sportsType" id="sportsType">
+      <option value="" disabled selected>Select Sports</option>
+      <option value="Badminton">Badminton</option>
+      <option value="FootBall">FootBall</option>
+      <option value="Running">Running</option>
+      <option value="Climbing">Climbing</option>
+    </select><br/>
+    <button onclick="save()">Create</button>
+</body>
+</html>
