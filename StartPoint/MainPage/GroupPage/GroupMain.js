@@ -6,6 +6,7 @@ window.onload = async function() {
 document.addEventListener("DOMContentLoaded", function() {
 
     var groupID = sessionStorage.getItem('groupID');
+    var userID = sessionStorage.getItem('userID');
 
     // // 버튼 요소 가져오기
     // var writeButton = document.getElementById('writeButton');
@@ -16,12 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // viewButton.style.display = 'block';
 
     // 서버에서 데이터 가져오기
-    fetch(`/mainPageOrder?functionType=2&groupID=${groupID}`) // 실제 API URL로 변경
+    fetch(`/mainPageOrder?userID=${userID}&functionType=2&groupID=${groupID}`) // 실제 API URL로 변경
         .then(response => response.json())
         .then(data => {
             // 데이터 가져오기 성공 시 조직 이름 업데이트
             const organizationNameElement = document.getElementById('organizationName');
             organizationNameElement.textContent = data[0]['groupName']; // 응답 데이터에서 조직 이름을 가져와 업데이트
+            const permission = data[0]['permission'];
+            sessionStorage.setItem('permission',permission);
         })
         .catch(error => {
             console.error('Error fetching organization name:', error);

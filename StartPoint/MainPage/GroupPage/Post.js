@@ -14,9 +14,21 @@ window.onload = async function() {
     document.getElementById('title').textContent = title;
     document.getElementById('index').textContent = `Index: ${index}`;
     document.getElementById('content').textContent = content;
-    }
-
     
+
+    const permission = sessionStorage.getItem("permission");
+    console.log(document.getElementById('removeButton'));
+    
+
+    if (permission == 0) {
+        const removeButton = document.getElementById("removeButton");
+        if (removeButton) {
+            removeButton.style.display = 'none';
+        } else {
+            console.error('removeButton 요소를 찾을 수 없습니다.');
+        }
+}
+}
 function remove(){
     const queryString = window.location.search; // 쿼리스트링 가져오기
     const urlParams = new URLSearchParams(queryString); // URL SearchParams 객체 생성

@@ -19,8 +19,13 @@ async function mainPageOrder(query) {
         })
     } else if(functionType == 2){  ////////////////////// 어차피 postsOrder에서 가져오는 데이터들이라서 삭제해도 무방
         const groupID = query["groupID"];
+        const userID = query["userID"];
         return new Promise((resolve,reject) => {
-            connection.query('SELECT groupName FROM organizations WHERE groupID = ?', [groupID],
+            connection.query(`SELECT org.groupName, usg.permission 
+                              FROM organizations AS org 
+                              JOIN user_groups AS usg ON org.groupID = usg.groupID
+                              WHERE org.groupID = ? AND usg.userID = ?`
+                , [groupID,userID],
                 (error, results, fields) => {
                     console.log(results)
                     resolve(results);

@@ -1,7 +1,16 @@
+
+
 window.onload = async function() {
     loadSidebar();
     loadNavbar();
+    const permission = sessionStorage.getItem("permission");
+    console.log(permission)
 
+    if (permission == 0) {
+        const writeButton = document.getElementById('writeButton');
+        writeButton.style.display = 'none';
+    }
+    
     var buttonField = document.getElementById('fileList'); // HTML 버튼 추가할 필드 불러오기
     console.log(buttonField)
     var writeButton = document.getElementById('writeButton');
@@ -32,14 +41,8 @@ window.onload = async function() {
     });
 }
 
-//writeButton.style.display = 'none';
-// const permission = fetch(
-//     ///////////////////////////permission 요청하기///////////////////////////
-// );
 
-// if (permission == 1) {
-//     writeButton.style.display = 'block';
-// }
+
 
 //보여주는 기능 함수이긴한데 실제로 작동하는 원리는
 // title,index,content 값을 쿼리스트링으로 변환하여 Post.html 으로 보내서
@@ -49,6 +52,6 @@ function showContent(data){
     const encodedIndex = encodeURIComponent(data['postID']);
     const encodedContent = encodeURIComponent(data['content']);
 
-    const url = `post.html?title=${encodedTitle}&index=${encodedIndex}&content=${encodedContent}`;
+    const url = `Post.html?title=${encodedTitle}&index=${encodedIndex}&content=${encodedContent}`;
     window.location.href = url;
 }
