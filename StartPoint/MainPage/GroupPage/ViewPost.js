@@ -2,6 +2,16 @@ window.onload = async function() {
     loadNavbar();
 }
 
+writeButton = document.getElementById('writeButton');
+writeButton.style.display = 'none';
+const permission = fetch(
+    ///////////////////////////permission 요청하기///////////////////////////
+);
+
+if (permission == 1) {
+    writeButton.style.display = 'block';
+}
+
 var buttonField = document.getElementById('fileList'); // HTML 버튼 추가할 필드 불러오기
 
 const groupID = sessionStorage.getItem('groupID');
@@ -28,8 +38,8 @@ const postData = fetch('/postsOrder', {
 });
 
 //보여주는 기능 함수이긴한데 실제로 작동하는 원리는
-// title,index,content 값을 쿼리스트링으로 변환하여 title.html 으로 보내서
-//title.html 을 오픈하는 방식
+// title,index,content 값을 쿼리스트링으로 변환하여 Post.html 으로 보내서
+//Post.html 을 오픈하는 방식
 function showContent(data){
     const encodedTitle = encodeURIComponent(data['title']);
     const encodedIndex = encodeURIComponent(data['postID']);
