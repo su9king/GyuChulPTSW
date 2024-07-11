@@ -14,28 +14,7 @@
     <p id="index"></p>
     <p id="content"></p>
 
-    <script type="module" src="/CommonFeatures.js"></script>
-    <script>
-        window.onload = async function() {
-       
-        loadNavbar();
-        loadSidebar();
-
-        }
-        const queryString = window.location.search; // 쿼리스트링 가져오기
-        const urlParams = new URLSearchParams(queryString); // URL SearchParams 객체 생성
-        
-
-        const title = urlParams.get('title'); //urlParams 객체에서 해당 파라미터로 value 가져오기
-        const index = urlParams.get('index');
-        const content = urlParams.get('content');
-
-        //html에 요소 추가.
-        document.getElementById('title').textContent = title;
-        document.getElementById('index').textContent = `Index: ${index}`;
-        document.getElementById('content').textContent = content;
-
-    </script>
+    <button id = removeButton onclick="remove()">삭제하기</button>
     
 </body>
 </html>

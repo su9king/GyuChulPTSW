@@ -20,7 +20,7 @@ async function postsOrder(data) {
     
     
   }
-  else if (functionType == 2) {
+  else if (functionType == 2){
     const title = data.title;
     const content = data.content;
     return new Promise((resolve, reject) => {
@@ -37,31 +37,6 @@ async function postsOrder(data) {
             }
         );
     });
-  }
-  else if (functionType == 3) {
-    
-    const postID = data.postID;
-    const permission = data.permission;
-
-    return new Promise((resolve, reject) => {
-
-      if (permission == 0) {
-
-        resolve(0);  // 권한 없는데 삭제 시도
-      } else {
-
-        connection.query(`DELETE FROM posts WHERE postID = ?`,[postID],
-          (err, results) => {
-          if (err) {
-            console.error('쿼리 실행 오류:', err);
-            return reject(err);
-          }
-            resolve(1);
-        });
-      }
-    }); 
-
-
   }
 
 }
