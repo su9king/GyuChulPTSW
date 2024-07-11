@@ -4,14 +4,14 @@ window.onload = async function() {
 }
 
 writeButton = document.getElementById('writeButton');
-writeButton.style.display = 'none';
-const permission = fetch(
-    ///////////////////////////permission 요청하기///////////////////////////
-);
+//writeButton.style.display = 'none';
+// const permission = fetch(
+//     ///////////////////////////permission 요청하기///////////////////////////
+// );
 
-if (permission == 1) {
-    writeButton.style.display = 'block';
-}
+// if (permission == 1) {
+//     writeButton.style.display = 'block';
+// }
 
 var buttonField = document.getElementById('fileList'); // HTML 버튼 추가할 필드 불러오기
 
@@ -27,9 +27,11 @@ const postData = fetch('/postsOrder', {
 .then(data => {
     const postDataArray = data
     postDataArray.forEach(function(data) {
+        console.log(data)
         var Item = document.createElement('button');
         Item.textContent = data['title'];
         Item.onclick = function() { showContent(data); };
+        console.log(Item)
         buttonField.appendChild(Item);
         });
 })
