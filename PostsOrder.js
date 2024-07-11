@@ -25,8 +25,8 @@ async function postsOrder(data) {
     const content = data.content;
     return new Promise((resolve, reject) => {
         connection.query(
-            `INSERT INTO posts (title, content,groupID) VALUES (?, ?, ?)`,
-            [title, content,groupID],
+            `INSERT INTO posts (title, content, groupID) VALUES (?, ?, ?)`,
+            [title, content, groupID],
             (err, result) => {
                 if (err) {
                     console.error('쿼리 실행 오류:', err);

@@ -7,13 +7,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var groupID = sessionStorage.getItem('groupID');
 
-    // 버튼 요소 가져오기
-    var writeButton = document.getElementById('writeButton');
-    var viewButton = document.getElementById('viewButton');
+    // // 버튼 요소 가져오기
+    // var writeButton = document.getElementById('writeButton');
+    // var viewButton = document.getElementById('viewButton');
 
-    //후에 권한에 따른 리소스 제공 코드 필요
-    writeButton.style.display = 'block';
-    viewButton.style.display = 'block';
+    // //후에 권한에 따른 리소스 제공 코드 필요
+    // writeButton.style.display = 'block';
+    // viewButton.style.display = 'block';
+
     // 서버에서 데이터 가져오기
     fetch(`/mainPageOrder?functionType=2&groupID=${groupID}`) // 실제 API URL로 변경
         .then(response => response.json())
