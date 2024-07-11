@@ -1,5 +1,6 @@
 window.onload = async function() {
     loadNavbar();
+    loadSidebar();
 }
 
 function save(){

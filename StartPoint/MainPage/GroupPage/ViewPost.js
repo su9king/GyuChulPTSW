@@ -1,5 +1,6 @@
 window.onload = async function() {
     loadNavbar();
+    loadSidebar();
 }
 
 var buttonField = document.getElementById('fileList'); // HTML 버튼 추가할 필드 불러오기

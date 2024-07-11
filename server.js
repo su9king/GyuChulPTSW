@@ -50,6 +50,11 @@ app.get('/NavigationOrder', async (req,res) => {
     res.sendFile(path.join(__dirname, 'StartPoint/NavigationBar', 'NavigationBar.html'));
 })
 
+app.get('/SideBarOrder', async (req,res) => {
+    console.log("인터페이스 요청 성공")
+    res.sendFile(path.join(__dirname, 'StartPoint/NavigationBar', 'SideBar.html'));
+})
+
 app.post('/postsOrder', async (req, res) => {
     const data = req.body;
     console.log("게시물 페이지 요청 성공")
