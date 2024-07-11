@@ -8,13 +8,19 @@
 </head>
 <body>
     <div id="navbar"></div>
+    <div id="sidebar"></div>
     <h1 id="title"></h1>
     <p id="index"></p>
     <p id="content"></p>
 
-    <script type = "module">
-        import { loadNavbar } from '/CommonFeatures.js';
+    <script type="module" src="/CommonFeatures.js"></script>
+    <script>
+        window.onload = async function() {
+       
         loadNavbar();
+        loadSidebar();
+
+        }
         const queryString = window.location.search; // 쿼리스트링 가져오기
         const urlParams = new URLSearchParams(queryString); // URL SearchParams 객체 생성
         
@@ -27,6 +33,8 @@
         document.getElementById('title').textContent = title;
         document.getElementById('index').textContent = `Index: ${index}`;
         document.getElementById('content').textContent = content;
+
     </script>
+    
 </body>
 </html>
