@@ -2,6 +2,8 @@
   display: none; /* 기본적으로 모든 버튼 숨기기 */
 }
 
-
+.sidebar-open .content {
+  margin-left: 250px; /* Adjust based on sidebar width */
+}
 
 

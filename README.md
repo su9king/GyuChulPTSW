@@ -10,3 +10,4 @@
 4. 2024.07.01(월) : main 브랜치 정리 : PT06 작업을 위한 리소스 정리 실시.
 5. 2024.07.08(월) : PT06 작업 완료 : mainPage, groupChannel 페이지 개발 완료.
 6. 2024.07.09(화) : PT07 naming convention - 파일이름 수정
+7. 2024.07.12(금) : PT07 작업 완료 : Create Group, Delete Post, Navigation Bar(상단, side) 개발 완료.

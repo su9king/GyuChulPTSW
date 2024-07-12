@@ -19,3 +19,6 @@ body {
     text-align: center;
 }
 
+.sidebar-open .content {
+    margin-left: 250px; /* Adjust based on sidebar width */
+}

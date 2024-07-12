@@ -61,6 +61,6 @@
     left: 0;
 }
 
-.sidebar-open .content {
+.sidebar-open #nav1 {
     margin-left: 250px;
 }
