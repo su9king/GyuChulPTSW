@@ -9,8 +9,6 @@ window.onload = async function() {
         const userID = sessionStorage.getItem('userID');
         createButtons(await allGroupList(userID));
         loadNavbar();
-
-        
     }
 }
 

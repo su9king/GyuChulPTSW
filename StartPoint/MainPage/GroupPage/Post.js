@@ -1,7 +1,7 @@
 window.onload = async function() {
        
     loadNavbar();
-    //loadSidebar();
+    loadSidebar();
     const queryString = window.location.search; // 쿼리스트링 가져오기
     const urlParams = new URLSearchParams(queryString); // URL SearchParams 객체 생성
         
