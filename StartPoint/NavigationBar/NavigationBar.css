@@ -37,3 +37,30 @@
 #nav1 ul li button:hover {
     background-color: #575757;
 }
+
+.content {
+    padding: 20px;
+    transition: margin-left 0.5s; /* Smooth transition effect */
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+
+.sidebar-open .sidebar {
+    left: 0;
+}
+
+.sidebar-open .content {
+    margin-left: 250px;
+}
