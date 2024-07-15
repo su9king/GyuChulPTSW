@@ -111,3 +111,8 @@ function getInfo() {
         }
     });
 }
+
+/////전화번호 인증 테스트/////
+function PhoneCheck() {
+    console.log("TEST")
+}
