@@ -70,3 +70,11 @@ function logoutInMainPage() {
 function gotoCreateGroup() {
     window.location.href = 'CreateGroup/CreateGroup.html';
 }
+
+function callBuyingSystem(){
+    console.log("결제시스템 테스트");
+}
+
+function entryNewGroup(){
+    console.log("새로운 조직 참가");
+}
