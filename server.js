@@ -73,10 +73,11 @@ app.post('/createGroup', async(req,res) => {
 })
 app.post('/memberPageOrder', async(req,res) => {
     const data = req.body;
+
     console.log("멤버관리 페이지 요청 성공");
     
     const results = await memberPageOrder(data);
-    console.log(results)
+
     res.json(results);
 })
 

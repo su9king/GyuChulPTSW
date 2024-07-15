@@ -9,7 +9,78 @@ window.onload = async function() {
         const userID = sessionStorage.getItem('userID');
         createButtons(await allGroupList(userID));
         loadNavbar();
+        checkInvite(userID);
     }
+}
+
+
+//해당 유저에게 수신된 초대장 확인
+async function checkInvite(userID) {
+
+        const response = await fetch(`/mainPageOrder?functionType=3&userID=${userID}`, {
+            method: 'GET'
+        });
+
+        const data = await response.json();
+
+    
+        const overlay = document.getElementById('overlay');
+        const newMemberTemplate = document.getElementById('newMemberTemplate');
+        
+        function loadTemplate(data2) {
+            fetch('MyGroupTemplate.html')
+                .then(response => response.text())
+                .then(data => {
+            
+
+                    newMemberTemplate.innerHTML = data;
+                    const closeTemplateBtn = newMemberTemplate.querySelector('#closeTemplateBtn');
+                    
+                    const organizationNameElement = newMemberTemplate.querySelector('#organizationName');
+                    organizationNameElement.textContent = data2[0]['groupName']; // 응답 데이터에서 조직 이름을 가져와 업데이트
+                    if (closeTemplateBtn) {
+                        closeTemplateBtn.addEventListener('click', function() {
+                            overlay.classList.remove('visible');
+                            newMemberTemplate.classList.remove('visible');
+                        });
+                    }
+                    if (acceptBtn) {
+                        acceptBtn.addEventListener('click', function() {
+                            fetch('/memberPageOrder', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: `groupID=${data2[0]['groupID']}&functionType=4&userID=${data2[0]['userID']}`
+                            }) // 실제 API URL로 변경
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data == 0){
+                                    alert("오류가 발생했습니다.")
+                        
+                                }else if (data == 1){
+                                    alert("해당 조직에 참여하였습니다.")
+                                    location.reload(true);
+                                }
+                             })
+                            .catch(error => {
+                                    console.error('에러 발생함', error);
+                                   
+                            });
+                        });
+                    }
+                })
+                .catch(error => console.error('Error loading template:', error));
+            }
+        
+    
+        overlay.classList.add('visible');
+        newMemberTemplate.classList.add('visible');
+
+        if (data.length > 0){
+            loadTemplate(data);
+        }
+        
 }
 
 // 유저가 속해있는 조직
@@ -71,10 +142,16 @@ function gotoCreateGroup() {
     window.location.href = 'CreateGroup/CreateGroup.html';
 }
 
+
+
 function callBuyingSystem(){
     console.log("결제시스템 테스트");
 }
 
 function entryNewGroup(){
     console.log("새로운 조직 참가");
+}
+
+function accept(){
+    
 }

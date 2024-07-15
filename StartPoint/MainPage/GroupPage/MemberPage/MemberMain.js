@@ -39,7 +39,7 @@ function addMember(name) {
 
     button.addEventListener('click', () => {
         alert(`유저 ${name}를 조직에서 제외합니다.`);
-        test(name);
+        remove(name);
     });
 
     memberDiv.appendChild(member);
@@ -48,7 +48,7 @@ function addMember(name) {
     nameContainer.appendChild(memberDiv);
 }
 
-function test(userName){
+function remove(userName){
     const groupID = sessionStorage.getItem('groupID');
     const permission = sessionStorage.getItem('permission');
     fetch('/memberPageOrder', {
@@ -117,6 +117,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function test() {  // 여기서 추가하면 NewMemberTemplate.html에서 사용 가능
-    alert('test good')
+async function send() {  // 여기서 추가하면 NewMemberTemplate.html에서 사용 가능
+    var ID = document.getElementById('ID').value;
+    const groupID = sessionStorage.getItem('groupID'); 
+
+    const functionType = 0;
+    
+    const response = await fetch('/memberPageOrder', {
+        method : 'POST',
+        headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+        body: `functionType=3&userName=${ID}&groupID=${groupID}`
+    });
+
+    var data = await response.text();
+
+    if (data == 1){
+        alert("초대장이 전송되었습니다.")
+    }else{
+        alert("이미 초대 되었거나, 유저가 존재하지 않습니다.")
+    }
+
+
 }

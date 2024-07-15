@@ -17,7 +17,7 @@ async function mainPageOrder(query) {
                 }
             )
         })
-    } else if(functionType == 2){  ////////////////////// 어차피 postsOrder에서 가져오는 데이터들이라서 삭제해도 무방
+    } else if(functionType == 2){ 
         const groupID = query["groupID"];
         const userID = query["userID"];
         return new Promise((resolve,reject) => {
@@ -28,6 +28,32 @@ async function mainPageOrder(query) {
                 , [groupID,userID],
                 (error, results, fields) => {
                     console.log(results)
+                    resolve(results);
+                }
+            )
+        })
+       
+    } else if(functionType == 3){ 
+        const userID = query["userID"];
+        return new Promise((resolve,reject) => {
+            connection.query(`SELECT * FROM inviteGroup WHERE userID = ?`
+                , [userID],
+                (error, results, fields) => {
+                    console.log("3번요청")
+                    console.log(results);
+                    resolve(results);
+                }
+            )
+        })
+       
+    }else if(functionType == 5){ 
+        const userID = query["userID"];
+        return new Promise((resolve,reject) => {
+            connection.query(`SELECT * FROM inviteGroup WHERE userID = ?`
+                , [userID],
+                (error, results, fields) => {
+                    console.log("3번요청")
+                    console.log(results);
                     resolve(results);
                 }
             )
