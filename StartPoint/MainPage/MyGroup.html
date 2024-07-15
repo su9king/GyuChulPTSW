@@ -22,13 +22,15 @@
     <br>
     <br>
     <button class="btn" onclick="callBuyingSystem()">결제시스템 테스트</button>
-    <button class="btn" onclick="entryNewGroup()">새로운 조직 참가</button>
+    <button class="btn" id="entryNewGroup">새로운 조직 참가</button>
     <div>
       <li><div id="button-container"></div></li>
     </div>
     <div>
       <button onclick="gotoCreateGroup()">조직 생성하기</button>
     </div>
+    <div id="overlay" class="overlay hidden"></div>
+    <div id="entryNewGroupTemplate" class="modal hidden"></div>
   </div>
 </body>
 </html>
