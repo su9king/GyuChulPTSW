@@ -6,11 +6,12 @@ const connection = require('./DB');
 var sessionToken = [];
 module.exports = sessionToken;
 
-//indexTest 코드에서 login,register,checkData 함수 불러오기
+//GyuChul 이 제작한 모듈 불러오기
 const { accessMain } = require('./AccessModule');
 const { mainPageOrder } = require('./MainPageOrder');
 const { postsOrder } = require('./PostsOrder')
 const { createGroupOrder } = require('./creageGroupOrder')
+const { memberPageOrder } = require('./memberPageOrder.js')
 
 const app = express();
 const server = http.createServer(app);
@@ -70,7 +71,14 @@ app.post('/createGroup', async(req,res) => {
     const results = await createGroupOrder(data);
     res.json(results);
 })
-
+app.post('/memberPageOrder', async(req,res) => {
+    const data = req.body;
+    console.log("멤버관리 페이지 요청 성공");
+    
+    const results = await memberPageOrder(data);
+    console.log(results)
+    res.json(results);
+})
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
