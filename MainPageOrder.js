@@ -46,6 +46,47 @@ async function mainPageOrder(query) {
             )
         })
        
+    }else if (functionType == 4) {
+        const groupID = query["groupCode"];
+        const userID = query["userID"];
+        return new Promise((resolve, reject) => {
+            connection.query(
+                `SELECT groupID FROM organizations WHERE groupID = ?`, // (3) 올바른 코드를 가져왔나?
+                [groupID],
+                (error, results, fields) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (results != null) {  // (3) 존재하는 groupID를 들고왔구나
+                            connection.query(
+                                `SELECT userID,groupID FROM user_groups WHERE userID = ? and groupID = ?`,  // (2) 이미 가입된건 아닌가?
+                                [userID, groupID],
+                                (error, results, fields) => {
+                                    if (error) {
+                                        reject(error);
+                                    } else if (results == null) {  // (2) 아니네 아직 가입 안되었구나
+                                        connection.query(
+                                            `INSERT userID,groupID,permission INTO user_groups VALUES( ?,?,? )`,  // (1) 그럼 추가해줄게!
+                                            [userID, groupID, '0'],
+                                            (error, results, fields) => {
+                                                if (error) {
+                                                    reject(error);
+                                                } else {
+                                                    resolve(1);  // (1) 추가해줬다!
+                                                }
+                                            }
+                                        );
+                                    } else if (results != null) {
+                                        resolve(2);  // 이미 있는데 왜 또
+                                    }
+                                }
+                            )
+                            
+                        } else {
+                            resolve(3);  // (3) 이상한 코드 컷
+                        }
+                    }
+                })})
     }else if(functionType == 5){ 
         const userID = query["userID"];
         return new Promise((resolve,reject) => {
@@ -55,9 +96,10 @@ async function mainPageOrder(query) {
                     console.log("3번요청")
                     console.log(results);
                     resolve(results);
-                }
-            )
-        })
-       
+                    }
+                )
+            })
+                   
     }
+                
 }

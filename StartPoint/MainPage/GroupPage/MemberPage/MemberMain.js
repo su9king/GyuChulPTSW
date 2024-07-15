@@ -139,3 +139,18 @@ async function send() {  // 여기서 추가하면 NewMemberTemplate.html에서 
 
 
 }
+
+function getGroupID() {
+    console.log('함수');
+    const groupID = document.getElementById('getGroupID').textContent;
+    console.log(groupID)
+    if (groupID == '그룹 초대코드') {
+        console.log('트루');
+        // document.getElementById('getGroupID').textContent = sessionStorage.getItem('groupId');
+        document.getElementById('getGroupID').textContent = '바뀌나?';
+    }
+    else {
+        console.log('펄스');
+        document.getElementById('getGroupID').textContent = '그룹 초대코드';
+    }
+}
