@@ -7,7 +7,7 @@
 }
 
 
-.overlay {
+.overlay2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +18,7 @@
   z-index: 1;
 }
 
-.modal {
+.modal2 {
   position: fixed;
   top: 50%;
   left: 50%;

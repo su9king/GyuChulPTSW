@@ -158,8 +158,8 @@ function entryNewGroup(){
     
 document.addEventListener('DOMContentLoaded', function() {
     const entryNewGroup = document.getElementById('entryNewGroup');
-    const overlay = document.getElementById('overlay');
-    const entryNewGroupTemplate = document.getElementById('entryNewGroupTemplate');
+    const overlay = document.getElementById('overlay2');
+    const entryNewGroupTemplate = document.getElementById('entryNewGroupTemplate2');
 
     function loadTemplate() {
         fetch('EntryNewGroupTemplate.html')

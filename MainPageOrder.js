@@ -62,12 +62,13 @@ async function mainPageOrder(query) {
                                 `SELECT userID,groupID FROM user_groups WHERE userID = ? and groupID = ?`,  // (2) 이미 가입된건 아닌가?
                                 [userID, groupID],
                                 (error, results, fields) => {
+                                    console.log(results.length);
                                     if (error) {
                                         reject(error);
-                                    } else if (results == null) {  // (2) 아니네 아직 가입 안되었구나
+                                    } else if (results.length == 0) {  // (2) 아니네 아직 가입 안되었구나
                                         connection.query(
-                                            `INSERT userID,groupID,permission INTO user_groups VALUES( ?,?,? )`,  // (1) 그럼 추가해줄게!
-                                            [userID, groupID, '0'],
+                                            `INSERT INTO user_groups (userID,groupID,permission) VALUES( ?,?,? )`,  // (1) 그럼 추가해줄게!
+                                            [userID, groupID, 0],
                                             (error, results, fields) => {
                                                 if (error) {
                                                     reject(error);
