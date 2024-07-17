@@ -14,11 +14,12 @@ const { postsOrder } = require('./PostsOrder');
 const { createGroupOrder } = require('./creageGroupOrder');
 const { memberPageOrder } = require('./memberPageOrder.js');
 const { schedulePageOrder } = require('./SchedulePageOrder');
-require('./chatting')(server);
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
+
+require('./ChatPageOrder')(server);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
