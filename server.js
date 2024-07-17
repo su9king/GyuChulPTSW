@@ -3,6 +3,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
 const connection = require('./DB');
+const bodyParser = require('body-parser');
 var sessionToken = [];
 module.exports = sessionToken;
 
@@ -19,6 +20,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 app.use(express.urlencoded({ extended: true }));
+const bodyParser = require('body-parser');
 // 리소스 제공
 app.use(express.static(path.join(__dirname, 'StartPoint')));
 
@@ -85,7 +87,6 @@ app.post('/memberPageOrder', async(req,res) => {
 app.get('/getAllSchedule', async (req, res) => {
     console.log("일정 불러오기 요청 성공");
     const results = await schedulePageOrder(1);
-
     res.json(results);    
 });
 

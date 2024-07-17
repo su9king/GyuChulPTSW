@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 calendar.render();
             });
 
+            // 폼 초기화
             eventForm.reset();
         }
     });
@@ -72,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => failureCallback(error));
     }
 
-    // 새로운 일정 저장
     function saveEvent(event, callback) {
         fetch('/newSchedule', {
             method: 'POST',
@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 일정 삭제
     function deleteEvent(eventId) {
         fetch(`/delSchedule/${eventId}`, {
             method: 'DELETE'

@@ -4,7 +4,6 @@ const path = require('path');
 const scheduleFilePath = path.join(__dirname, 'ScheduleEvent.json');
 
 async function schedulePageOrder(functionType, req) {
-    //try {
         const data = await fs.readFile(scheduleFilePath, 'utf8');
         const events = JSON.parse(data);
 
@@ -26,9 +25,6 @@ async function schedulePageOrder(functionType, req) {
             await fs.writeFile(scheduleFilePath, JSON.stringify(updatedEvents, null, 2));  // null : 필터링 없이 전부 들어가!, 2는 보기편하라고 들여쓰기
             return { message: 'Event deleted' };
         }
-    //} catch (error) {
-    //    throw new Error('Failed to process event data');
-    //}
 }
 
 module.exports = { schedulePageOrder };
