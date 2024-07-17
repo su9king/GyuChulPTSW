@@ -14,6 +14,7 @@ const { postsOrder } = require('./PostsOrder');
 const { createGroupOrder } = require('./creageGroupOrder');
 const { memberPageOrder } = require('./memberPageOrder.js');
 const { schedulePageOrder } = require('./SchedulePageOrder');
+require('./chatting')(server);
 
 const app = express();
 const server = http.createServer(app);
