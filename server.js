@@ -20,7 +20,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 app.use(express.urlencoded({ extended: true }));
-const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 // 리소스 제공
 app.use(express.static(path.join(__dirname, 'StartPoint')));
 
