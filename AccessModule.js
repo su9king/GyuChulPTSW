@@ -110,6 +110,16 @@ async function accessMain (data) {
         }
         console.log(sessionToken);
         
-};  
+    } else if (functionType == 4){
+        const coolsms = require('coolsms-node-sdk').default
+        const messageService = new coolsms('NCSJXQRRA1V5WVGP', '6MYZTKI5PEDVU3RRPKQTKJQF0EBRMLR0')
+        console.log("correct Message.")
+        // 단일 발송 예제
+        messageService.sendOne({
+        to: '01062131310',
+        from: '01027034699',
+        text: 'JEYSport 인증번호 입니다. 423617'
+        }).then(res => console.log(res))
+    };  
 
 }

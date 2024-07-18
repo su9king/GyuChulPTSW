@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="MyGroup.css">
     <script src="MyGroup.js"></script>
     <script type="module" src="/CommonFeatures.js"></script>
+    <script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     
 </head>
 <body>
@@ -36,6 +37,26 @@
     </div>
     <div id="overlay2" class="overlay2 hidden"></div>
     <div id="entryNewGroupTemplate2" class="modal2 hidden"></div>
+
+    <br>
+    <br>
+    <br>
+    <form id="payment-form">
+      <label for="amount">금액:</label>
+      <input type="number" id="amount" name="amount" required><br><br>
+
+      <label for="orderId">주문 ID:</label>
+      <input type="text" id="orderId" name="orderId" required><br><br>
+
+      <label for="orderName">주문 이름:</label>
+      <input type="text" id="orderName" name="orderName" required><br><br>
+
+      <label for="customerEmail">이메일:</label>
+      <input type="email" id="customerEmail" name="customerEmail" required><br><br>
+
+      <button type="submit">결제하기</button>
+  </form>
+
   </div>
 </body>
 </html>

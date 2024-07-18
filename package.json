@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "axios": "^1.7.2",
+    "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "jszip": "^3.10.1",
     "node-mysql": "^0.4.2",
     "socket.io": "^4.7.5",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "coolsms-node-sdk": "^2.0.1"
   }
 }

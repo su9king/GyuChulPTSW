@@ -1,10 +1,14 @@
 const express = require('express');
-const http = require('http');
+const https = require('https');
 const socketIo = require('socket.io');
 const path = require('path');
 const connection = require('./DB');
+const fs = require('fs');
+const axios = require('axios');
+const bodyParser = require('body-parser');
 var sessionToken = [];
 module.exports = sessionToken;
+
 
 //GyuChul 이 제작한 모듈 불러오기
 const { accessMain } = require('./AccessModule');
@@ -14,8 +18,21 @@ const { createGroupOrder } = require('./creageGroupOrder')
 const { memberPageOrder } = require('./memberPageOrder.js')
 
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+app.use(bodyParser.json());
+
+const options = {
+    //JEYSport.codns.com 서버 열때의 SSL 인증서
+    //key: fs.readFileSync('/etc/letsencrypt/live/jeysport.codns.com/privkey.pem'),
+    //cert: fs.readFileSync('/etc/letsencrypt/live/jeysport.codns.com/fullchain.pem')
+
+    key: fs.readFileSync(path.join(__dirname, 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert.pem'))
+
+
+};
+
+
+const server = https.createServer(options,app);
 
 app.use(express.urlencoded({ extended: true }));
 // 리소스 제공
@@ -81,5 +98,38 @@ app.post('/memberPageOrder', async(req,res) => {
     res.json(results);
 })
 
-const PORT = process.env.PORT || 3000;
+app.post('/test', async (req,res) => {
+    console.log("Test호출")
+    const { imp_uid } = req.body;
+
+    try{
+        //인증 토큰 발급
+        const getToken = await axios({
+            url : 'https://api.iamport.kr/users/getToken',
+            method : "post",
+            headers : {" Content-Type" : "application/json"},
+            data : {
+                imp_key : "8513575281368781",
+                imp_secret : "0xxTSW8frs14VCX0BLFHkRujRuiPkWUNaAxmZEtrpnU7kSymj8a4QAeoK3TqpS02vsMWx8XjkmgpHldu"
+            }
+        
+        });
+        const { access_token } = getToken.data; // 인증 토큰
+        const getCertifications = await axios ({
+
+            url : `https://api.iamport.kr/certifications/${imp_uid}`,
+            method : "get",
+            headers : {"Authorization" : access_token }
+        });
+        const certificationInfo = getCertifications.data;
+
+        const {unique_key , unique_in_site , name , gender ,birth } = certificationInfo;
+        console.log(name,brith);
+    } catch(e){
+        console.error(e);
+    }
+
+})
+
+const PORT = process.env.PORT || 443;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

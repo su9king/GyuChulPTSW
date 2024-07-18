@@ -11,7 +11,40 @@ window.onload = async function() {
         createButtons(await allGroupList(userID));
         loadNavbar();
         checkInvite(userID);
-    }
+
+
+        var IMP = window.IMP;
+        IMP.init("imp74527225");   /* imp~ : 가맹점 식별코드*/
+        document.getElementById('payment-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+        
+            IMP.request_pay({
+                pg: 'tosspay',
+                pay_method: 'card',
+                merchant_uid: 'merchant_' + new Date().getTime(),
+        
+                name: '예약 지점명 : ' + '점',
+                amount: 100,
+                buyer_email: "su9king@naver.com",  /*필수 항목이라 "" 로 남겨둠*/
+                buyer_name: "테스트용 책",
+            }, function(rsp) {
+                console.log(rsp);
+                
+                 //결제 성공 시
+                if (rsp.success) {
+                    var msg = '결제가 완료되었습니다.';
+                    alert(msg);
+                    window.location.href = 'test.html'
+                } else {
+                    var msg = '결제에 실패하였습니다.';
+                    msg += '에러내용 : ' + rsp.error_msg;
+                }
+                alert(msg);
+            })});
+        
+        
+              
+}
 }
 
 
@@ -148,7 +181,34 @@ function gotoCreateGroup() {
 
 function callBuyingSystem(){
     console.log("결제시스템 테스트");
+    var IMP = window.IMP;
+    IMP.init("imp74527225");
+
+    IMP.request_pay({
+        pg: 'tosspay',
+        pay_method: 'card',
+        merchant_uid: 'merchant_' + new Date().getTime(),
+
+        name: '예약 지점명 : ' + '점',
+        amount: 100,
+        buyer_email: "su9king@naver.com",  /*필수 항목이라 "" 로 남겨둠*/
+        buyer_name: "테스트용 책",
+    }, function(rsp) {
+        console.log(rsp);
+        
+         //결제 성공 시
+        if (rsp.success) {
+            var msg = '결제가 완료되었습니다.';
+            alert(msg);
+            window.location.href = 'test.html'
+        } else {
+            var msg = '결제에 실패하였습니다.';
+            msg += '에러내용 : ' + rsp.error_msg;
+        }
+        alert(msg);
+    });
 }
+
 
 function entryNewGroup(){
     console.log("새로운 조직 참가");

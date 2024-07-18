@@ -113,6 +113,11 @@ function getInfo() {
 }
 
 /////전화번호 인증 테스트/////
-function PhoneCheck() {
-    console.log("TEST")
+async function PhoneCheck() {
+    const response = await fetch('/execute', {
+        method : 'POST',
+        headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+        body: `functionType=4`
+    });
+  
 }
