@@ -11,3 +11,4 @@
 5. 2024.07.08(월) : PT06 작업 완료 : mainPage, groupChannel 페이지 개발 완료.
 6. 2024.07.09(화) : PT07 naming convention - 파일이름 수정
 7. 2024.07.12(금) : PT07 작업 완료 : Create Group, Delete Post, Navigation Bar(상단, side) 개발 완료.
+8. 2024.07.19(금) : PT08 작업 완료 : 채팅기능,스케줄 기능, 전화번호 인증,결제시스템 개발
