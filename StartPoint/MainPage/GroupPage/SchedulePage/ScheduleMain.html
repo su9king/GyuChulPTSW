@@ -1,3 +1,20 @@
-<h1>
-    ScheduleMain
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <!--<link rel="stylesheet" href="ScheduleMain.css">-->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script src="ScheduleMain.js"></script>
+</head>
+<body>
+    <div id='calendar'></div>
+    <form id="eventForm">
+        <input type="text" id="eventTitle" placeholder="Event Title" required>
+        <input type="datetime-local" id="eventStart" required>
+        <input type="datetime-local" id="eventEnd">
+        <button type="submit">Add Event</button>
+    </form>
+</body>
+</html>

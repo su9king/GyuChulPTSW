@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatting</title>
+    <title>Chat</title>
+    <link rel="stylesheet" href="ChatMain.css">
 </head>
 <body>
-    
+    <div id="chat-container">
+        <div id="messages"></div>
+        <form id="chatForm">
+            <input id="messageInput" type="text" placeholder="Type a message" required>
+            <button type="submit">Send</button>
+        </form>
+        <div id="onlineUsers"></div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="ChatMain.js"></script>
 </body>
 </html>

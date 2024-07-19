@@ -13,9 +13,10 @@ module.exports = sessionToken;
 //GyuChul 이 제작한 모듈 불러오기
 const { accessMain } = require('./AccessModule');
 const { mainPageOrder } = require('./MainPageOrder');
-const { postsOrder } = require('./PostsOrder')
-const { createGroupOrder } = require('./creageGroupOrder')
-const { memberPageOrder } = require('./memberPageOrder.js')
+const { postsOrder } = require('./PostsOrder');
+const { createGroupOrder } = require('./creageGroupOrder');
+const { memberPageOrder } = require('./memberPageOrder.js');
+const { schedulePageOrder } = require('./SchedulePageOrder');
 
 const app = express();
 app.use(bodyParser.json());
@@ -34,7 +35,10 @@ const options = {
 
 const server = https.createServer(options,app);
 
+require('./ChatPageOrder')(server);
+
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 // 리소스 제공
 app.use(express.static(path.join(__dirname, 'StartPoint')));
 
@@ -98,38 +102,24 @@ app.post('/memberPageOrder', async(req,res) => {
     res.json(results);
 })
 
-app.post('/test', async (req,res) => {
-    console.log("Test호출")
-    const { imp_uid } = req.body;
 
-    try{
-        //인증 토큰 발급
-        const getToken = await axios({
-            url : 'https://api.iamport.kr/users/getToken',
-            method : "post",
-            headers : {" Content-Type" : "application/json"},
-            data : {
-                imp_key : "8513575281368781",
-                imp_secret : "0xxTSW8frs14VCX0BLFHkRujRuiPkWUNaAxmZEtrpnU7kSymj8a4QAeoK3TqpS02vsMWx8XjkmgpHldu"
-            }
-        
-        });
-        const { access_token } = getToken.data; // 인증 토큰
-        const getCertifications = await axios ({
+app.get('/getAllSchedule', async (req, res) => {
+    console.log("일정 불러오기 요청 성공");
+    const results = await schedulePageOrder(1);
+    res.json(results);    
+});
 
-            url : `https://api.iamport.kr/certifications/${imp_uid}`,
-            method : "get",
-            headers : {"Authorization" : access_token }
-        });
-        const certificationInfo = getCertifications.data;
+app.post('/newSchedule', (req, res) => {
+    console.log("새로운 일정 저장하기 요청 성공");
+    const results = schedulePageOrder(2, req);
+    res.json(results);
+});
 
-        const {unique_key , unique_in_site , name , gender ,birth } = certificationInfo;
-        console.log(name,brith);
-    } catch(e){
-        console.error(e);
-    }
-
-})
+app.delete('/delSchedule/:id', (req, res) => {
+    console.log("일정 삭제하기 요청 성공");
+    const results = schedulePageOrder(3, req);
+    res.json(results);
+});
 
 const PORT = process.env.PORT || 443;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

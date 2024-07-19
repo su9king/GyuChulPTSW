@@ -2,7 +2,12 @@
   "dependencies": {
     "axios": "^1.7.2",
     "body-parser": "^1.20.2",
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/list": "^6.1.15",
+    "@fullcalendar/timegrid": "^6.1.15",
     "express": "^4.19.2",
+    "fullcalendar": "^6.1.15",
     "jszip": "^3.10.1",
     "node-mysql": "^0.4.2",
     "socket.io": "^4.7.5",
